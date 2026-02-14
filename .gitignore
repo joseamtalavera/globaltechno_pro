@@ -9,9 +9,8 @@ dist
 test-results
 playwright-report
 .DS_Store
-.claude
-CLAUDE.md
-globaltechno-claude-code-prompts.md
+SETUP.md
+SETUP_2.md
 terraform.tfstate
 terraform.tfstate.backup
 .terraform
