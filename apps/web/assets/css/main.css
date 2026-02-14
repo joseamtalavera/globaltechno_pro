@@ -1,0 +1,269 @@
+/* ==========================================================================
+   Globaltechno — Design System
+   Premium minimalism with cinematic depth
+   ========================================================================== */
+
+:root {
+  /* Backgrounds */
+  --color-bg-dark: #0A0A0B;
+  --color-bg-dark-subtle: #111112;
+  --color-bg-light: #FAFAF9;
+  --color-bg-light-alt: #F5F5F4;
+  --color-gradient-start: #0A0A0B;
+  --color-gradient-end: #1A1A2E;
+
+  /* Text */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #6B6B6B;
+  --color-text-on-dark: #F5F5F5;
+  --color-text-muted-on-dark: #999999;
+
+  /* Accent — electric mint green */
+  --color-accent: #00E5A0;
+  --color-accent-hover: #00CC8E;
+  --color-accent-subtle: rgba(0, 229, 160, 0.08);
+  --color-accent-glow: rgba(0, 229, 160, 0.2);
+
+  /* Borders */
+  --color-border-light: #E5E5E3;
+  --color-border-dark: #2A2A2B;
+
+  /* Status */
+  --color-danger: #EF4444;
+  --color-success: #00E5A0;
+
+  /* Typography */
+  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-body: 'Satoshi', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+
+  /* Layout */
+  --max-width: 1280px;
+  --section-padding-y: clamp(4rem, 8vw, 8rem);
+  --section-padding-x: clamp(1.25rem, 4vw, 2.5rem);
+  --content-padding: clamp(1rem, 3vw, 2rem);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 600ms;
+}
+
+/* ==========================================================================
+   Base Reset
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#__nuxt {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  background-color: var(--color-bg-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+}
+
+h3 {
+  font-family: var(--font-body);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+h4 {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+  font-weight: 500;
+}
+
+p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Section label — "WHAT WE DO", "OUR STACK", etc. */
+.section-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.section-label--light {
+  color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   Section Layout
+   ========================================================================== */
+
+.section {
+  padding: var(--section-padding-y) var(--section-padding-x);
+}
+
+.section--dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-on-dark);
+}
+
+.section--light {
+  background-color: var(--color-bg-light);
+  color: var(--color-text-primary);
+}
+
+.section--gradient {
+  background: linear-gradient(135deg, var(--color-bg-dark) 0%, #0d2818 50%, var(--color-bg-dark) 100%);
+  color: var(--color-text-on-dark);
+}
+
+.section__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Form Elements
+   ========================================================================== */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-light);
+  background: white;
+  color: var(--color-text-primary);
+  padding: 0.8rem 1rem;
+  transition: border-color var(--duration-fast) ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-secondary);
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Dark variant for inputs on dark backgrounds */
+.input--dark,
+.section--dark input,
+.section--dark textarea,
+.section--dark select {
+  border-color: var(--color-border-dark);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-on-dark);
+}
+
+.input--dark::placeholder,
+.section--dark input::placeholder,
+.section--dark textarea::placeholder {
+  color: var(--color-text-muted-on-dark);
+}
+
+/* ==========================================================================
+   Grain Overlay — applied via ::after on dark sections
+   ========================================================================== */
+
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ==========================================================================
+   Utility classes
+   ========================================================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.text-balance {
+  text-wrap: balance;
+}

@@ -1,0 +1,10 @@
+aws_region               = "eu-central-1"
+domain_name              = "globaltechno.eu"
+acm_certificate_arn      = "arn:aws:acm:eu-central-1:123456789012:certificate/11111111-2222-3333-4444-555555555555"
+database_url_secret_arn  = "arn:aws:secretsmanager:eu-central-1:123456789012:secret:globaltechno/database-url-AbCdEf"
+web_image_tag            = "latest"
+api_image_tag            = "latest"
+web_desired_count        = 2
+api_desired_count        = 2
+create_network           = true
+vpc_cidr                 = "10.40.0.0/20"

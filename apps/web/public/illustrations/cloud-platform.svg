@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="Cloud platform architecture">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c1522"/>
+      <stop offset="100%" stop-color="#1a2b42"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" rx="24" fill="url(#bg3)"/>
+  <g fill="none" stroke="#2f4e73" stroke-width="2">
+    <rect x="120" y="90" width="960" height="620" rx="18"/>
+    <rect x="180" y="160" width="840" height="180" rx="14"/>
+    <rect x="180" y="390" width="840" height="250" rx="14"/>
+  </g>
+  <g fill="#12243b" stroke="#4c739f" stroke-width="2">
+    <rect x="230" y="210" width="180" height="80" rx="10"/>
+    <rect x="460" y="210" width="180" height="80" rx="10"/>
+    <rect x="690" y="210" width="180" height="80" rx="10"/>
+    <rect x="255" y="440" width="240" height="150" rx="12"/>
+    <rect x="545" y="440" width="240" height="150" rx="12"/>
+  </g>
+  <g stroke="#90c3ff" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M410 250h50M640 250h50"/>
+    <path d="M350 290v150"/>
+    <path d="M580 290v150"/>
+    <path d="M810 290v150"/>
+    <path d="M495 515h50"/>
+  </g>
+  <g fill="#deecff" font-family="IBM Plex Mono, monospace" font-size="24">
+    <text x="244" y="257">Ingress</text>
+    <text x="490" y="257">Compute</text>
+    <text x="720" y="257">Security</text>
+    <text x="302" y="520">Observability</text>
+    <text x="620" y="520">Data Plane</text>
+  </g>
+</svg>

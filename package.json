@@ -1,0 +1,25 @@
+{
+  "name": "globaltechno_pro",
+  "private": true,
+  "version": "1.0.0",
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,mjs,cjs,json,md,vue,yml,yaml,tf,prisma}\""
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-import-resolver-typescript": "^4.3.5",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-vue": "^9.32.0",
+    "prettier": "^3.5.0",
+    "typescript": "^5.7.3"
+  }
+}

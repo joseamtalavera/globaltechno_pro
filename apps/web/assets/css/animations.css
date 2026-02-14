@@ -1,0 +1,169 @@
+/* ==========================================================================
+   Globaltechno — Animation Keyframes
+   ========================================================================== */
+
+/* --- Reveal animations --- */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* --- Decorative / looping --- */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes meshRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  33% {
+    transform: rotate(120deg) scale(1.05);
+  }
+  66% {
+    transform: rotate(240deg) scale(0.95);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes grain {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -10%);
+  }
+  30% {
+    transform: translate(3%, -15%);
+  }
+  50% {
+    transform: translate(12%, 9%);
+  }
+  70% {
+    transform: translate(9%, 4%);
+  }
+  90% {
+    transform: translate(-1%, 7%);
+  }
+}
+
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.4;
+  }
+}
+
+/* --- Utility classes --- */
+
+.animate-fade-up {
+  animation: fadeInUp 600ms var(--ease-out) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.animate-fade-in {
+  animation: fadeIn 600ms var(--ease-out) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.animate-scale-in {
+  animation: scaleIn 600ms var(--ease-out) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* Stagger children: add class to parent, children get incrementing delays */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.stagger-children.is-visible > *:nth-child(1) { animation: fadeInUp 600ms var(--ease-out) 0ms both; }
+.stagger-children.is-visible > *:nth-child(2) { animation: fadeInUp 600ms var(--ease-out) 100ms both; }
+.stagger-children.is-visible > *:nth-child(3) { animation: fadeInUp 600ms var(--ease-out) 200ms both; }
+.stagger-children.is-visible > *:nth-child(4) { animation: fadeInUp 600ms var(--ease-out) 300ms both; }
+.stagger-children.is-visible > *:nth-child(5) { animation: fadeInUp 600ms var(--ease-out) 400ms both; }
+.stagger-children.is-visible > *:nth-child(6) { animation: fadeInUp 600ms var(--ease-out) 500ms both; }
+.stagger-children.is-visible > *:nth-child(7) { animation: fadeInUp 600ms var(--ease-out) 600ms both; }
+.stagger-children.is-visible > *:nth-child(8) { animation: fadeInUp 600ms var(--ease-out) 700ms both; }
+
+/* --- Reduced motion --- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

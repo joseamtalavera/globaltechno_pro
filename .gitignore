@@ -1,0 +1,16 @@
+node_modules
+.pnpm-store
+.env
+.env.local
+coverage
+dist
+.nuxt
+.output
+test-results
+playwright-report
+.DS_Store
+globaltechno-claude-code-prompts.md
+terraform.tfstate
+terraform.tfstate.backup
+.terraform
+.terraform.lock.hcl

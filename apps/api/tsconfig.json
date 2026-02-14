@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@globaltechno/shared": ["../../packages/shared/src"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "test/**/*.ts", "prisma/seed.ts"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,9 @@
+node_modules
+.pnpm-store
+.nuxt
+.output
+dist
+coverage
+apps/web/test-results
+infra/terraform/**/*.tf
+apps/api/prisma/schema.prisma

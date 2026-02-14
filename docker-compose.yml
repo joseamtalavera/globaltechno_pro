@@ -1,0 +1,55 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: globaltechno-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: globaltechno
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d globaltechno']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: globaltechno-api
+    restart: unless-stopped
+    ports:
+      - '4000:4000'
+    environment:
+      NODE_ENV: production
+      PORT: '4000'
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/globaltechno?schema=public
+      SITE_URL: http://localhost:3000
+      APP_VERSION: 1.0.0
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    container_name: globaltechno-web
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    environment:
+      NUXT_API_BASE: http://api:4000/api
+      NUXT_PUBLIC_API_BASE: /api
+      NUXT_PUBLIC_SITE_URL: http://localhost:3000
+    depends_on:
+      - api
+
+volumes:
+  pgdata:

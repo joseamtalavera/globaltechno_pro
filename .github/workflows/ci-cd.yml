@@ -1,0 +1,157 @@
+name: CI-CD
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+env:
+  PNPM_VERSION: 9.15.0
+  NODE_VERSION: 22
+
+jobs:
+  quality:
+    name: Lint Test Build
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_DB: globaltechno
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd "pg_isready -U postgres -d globaltechno"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/globaltechno?schema=public
+      SITE_URL: http://localhost:3000
+      NUXT_PUBLIC_SITE_URL: http://localhost:3000
+      NUXT_PUBLIC_API_BASE: http://localhost:4000/api
+      NUXT_API_BASE: http://localhost:4000/api
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma Client
+        run: pnpm --filter @globaltechno/api prisma:generate
+
+      - name: Prisma Migrate
+        run: pnpm --filter @globaltechno/api prisma migrate deploy
+
+      - name: Prisma Seed
+        run: pnpm --filter @globaltechno/api prisma:seed
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Unit/Integration Tests
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+
+      - name: Install Playwright
+        run: pnpm --filter @globaltechno/web exec playwright install --with-deps chromium
+
+      - name: E2E Smoke
+        run: pnpm --filter @globaltechno/web test:e2e
+
+  docker:
+    name: Docker Build Push
+    runs-on: ubuntu-latest
+    needs: quality
+    if: github.ref == 'refs/heads/main'
+    outputs:
+      web_image: ${{ steps.meta.outputs.web_image }}
+      api_image: ${{ steps.meta.outputs.api_image }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build Web Image
+        run: docker build -f apps/web/Dockerfile -t ${{ secrets.ECR_WEB_REPOSITORY }}:${{ github.sha }} .
+
+      - name: Build API Image
+        run: docker build -f apps/api/Dockerfile -t ${{ secrets.ECR_API_REPOSITORY }}:${{ github.sha }} .
+
+      - name: Push Images
+        run: |
+          docker push ${{ secrets.ECR_WEB_REPOSITORY }}:${{ github.sha }}
+          docker push ${{ secrets.ECR_API_REPOSITORY }}:${{ github.sha }}
+
+      - id: meta
+        name: Set image outputs
+        run: |
+          echo "web_image=${{ secrets.ECR_WEB_REPOSITORY }}:${{ github.sha }}" >> "$GITHUB_OUTPUT"
+          echo "api_image=${{ secrets.ECR_API_REPOSITORY }}:${{ github.sha }}" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    name: Deploy ECS
+    runs-on: ubuntu-latest
+    needs: docker
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Update API task definition image
+        run: |
+          aws ecs describe-task-definition --task-definition ${{ secrets.ECS_API_TASK_DEFINITION }} --query taskDefinition > api-task-def.json
+          cat api-task-def.json | jq --arg IMAGE "${{ needs.docker.outputs.api_image }}" '
+            .containerDefinitions[0].image=$IMAGE |
+            del(.taskDefinitionArn,.revision,.status,.requiresAttributes,.compatibilities,.registeredAt,.registeredBy)
+          ' > api-task-def-updated.json
+          API_TASK_DEF_ARN=$(aws ecs register-task-definition --cli-input-json file://api-task-def-updated.json --query 'taskDefinition.taskDefinitionArn' --output text)
+          aws ecs update-service --cluster ${{ secrets.ECS_CLUSTER }} --service ${{ secrets.ECS_API_SERVICE }} --task-definition "$API_TASK_DEF_ARN"
+
+      - name: Update Web task definition image
+        run: |
+          aws ecs describe-task-definition --task-definition ${{ secrets.ECS_WEB_TASK_DEFINITION }} --query taskDefinition > web-task-def.json
+          cat web-task-def.json | jq --arg IMAGE "${{ needs.docker.outputs.web_image }}" '
+            .containerDefinitions[0].image=$IMAGE |
+            del(.taskDefinitionArn,.revision,.status,.requiresAttributes,.compatibilities,.registeredAt,.registeredBy)
+          ' > web-task-def-updated.json
+          WEB_TASK_DEF_ARN=$(aws ecs register-task-definition --cli-input-json file://web-task-def-updated.json --query 'taskDefinition.taskDefinitionArn' --output text)
+          aws ecs update-service --cluster ${{ secrets.ECS_CLUSTER }} --service ${{ secrets.ECS_WEB_SERVICE }} --task-definition "$WEB_TASK_DEF_ARN"
+
+      - name: Wait for stable services
+        run: |
+          aws ecs wait services-stable --cluster ${{ secrets.ECS_CLUSTER }} --services ${{ secrets.ECS_API_SERVICE }}
+          aws ecs wait services-stable --cluster ${{ secrets.ECS_CLUSTER }} --services ${{ secrets.ECS_WEB_SERVICE }}
+
+      - name: Post-deploy health check
+        run: |
+          curl --fail --silent --show-error "${{ secrets.ALB_HEALTH_URL }}/api/health" > /dev/null

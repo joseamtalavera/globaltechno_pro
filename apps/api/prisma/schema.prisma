@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ContactLead {
+  id        String   @id @default(cuid())
+  name      String   @db.VarChar(120)
+  company   String?  @db.VarChar(120)
+  email     String   @db.VarChar(255)
+  message   String   @db.Text
+  consent   Boolean
+  ipHash    String   @map("ip_hash") @db.VarChar(64)
+  userAgent String   @map("user_agent") @db.VarChar(512)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt], map: "idx_contact_leads_created_at")
+  @@map("contact_leads")
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique @db.VarChar(255)
+  consent   Boolean
+  ipHash    String   @map("ip_hash") @db.VarChar(64)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([email], map: "idx_newsletter_subscribers_email")
+  @@map("newsletter_subscribers")
+}
+
+model CaseStudy {
+  id          String   @id @default(cuid())
+  slug        String   @unique @db.VarChar(180)
+  title       String   @db.VarChar(220)
+  summary     String   @db.VarChar(500)
+  industry    String   @db.VarChar(140)
+  challenge   String   @db.Text
+  approach    String   @db.Text
+  outcome     String   @db.Text
+  tags        String[]
+  publishedAt DateTime? @map("published_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@index([publishedAt], map: "idx_case_studies_published_at")
+  @@map("case_studies")
+}
