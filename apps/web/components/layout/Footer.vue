@@ -29,8 +29,7 @@ const navGroups = [
       <div class="footer__top">
         <div class="footer__brand">
           <NuxtLink to="/" class="footer__logo-link" aria-label="Globaltechno home">
-            <span class="footer__logo" aria-hidden="true">G</span>
-            <span class="footer__wordmark">Globaltechno</span>
+            <img src="/logo.png" alt="Globaltechno" class="footer__logo" />
           </NuxtLink>
           <p class="footer__tagline">
             Intelligent automation, cybersecurity, and cloud-native engineering for enterprises ready to evolve.
@@ -91,23 +90,10 @@ const navGroups = [
 }
 
 .footer__logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  background: var(--color-accent);
-  color: var(--color-bg-dark);
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-}
-
-.footer__wordmark {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  height: 28px;
+  width: auto;
+  display: block;
+  filter: invert(1);
 }
 
 .footer__tagline {

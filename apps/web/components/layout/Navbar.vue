@@ -33,8 +33,7 @@ onUnmounted(() => {
 
     <nav class="navbar__inner" aria-label="Main navigation">
       <NuxtLink to="/" class="navbar__brand" aria-label="Globaltechno home">
-        <span class="navbar__logo" aria-hidden="true">G</span>
-        <span class="navbar__wordmark">Globaltechno</span>
+        <img src="/logo.png" alt="Globaltechno" class="navbar__logo" />
       </NuxtLink>
 
       <div class="navbar__links" :class="{ 'navbar__links--open': mobileOpen }">
@@ -124,24 +123,10 @@ onUnmounted(() => {
 }
 
 .navbar__logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-sm);
-  background: var(--color-accent);
-  color: var(--color-bg-dark);
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 400;
-}
-
-.navbar__wordmark {
-  font-family: var(--font-body);
-  font-size: 1.1rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  height: 32px;
+  width: auto;
+  display: block;
+  filter: invert(1);
 }
 
 .navbar__links {

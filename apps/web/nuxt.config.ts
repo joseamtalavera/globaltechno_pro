@@ -39,6 +39,9 @@ export default defineNuxtConfig({
         }
       ],
       link: [
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32.png' },
+        { rel: 'icon', type: 'image/png', sizes: '512x512', href: '/favicon-512.png' },
+        { rel: 'apple-touch-icon', sizes: '512x512', href: '/favicon-512.png' },
         { rel: 'canonical', href: process.env.NUXT_PUBLIC_SITE_URL ?? 'https://globaltechno.eu' }
       ]
     }
