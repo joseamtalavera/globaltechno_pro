@@ -4,7 +4,7 @@ interface Props {
   title: string;
   description: string;
   status: 'now' | 'coming';
-  span?: 1 | 2;
+  span?: 1 | 2 | 3;
 }
 
 withDefaults(defineProps<Props>(), {
@@ -61,6 +61,28 @@ withDefaults(defineProps<Props>(), {
   grid-column: span 2;
 }
 
+.solution-card--span-3 {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.solution-card--span-3 .solution-card__body {
+  margin-top: 0;
+  flex: 1;
+}
+
+.solution-card--span-3 .solution-card__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  max-width: 16ch;
+}
+
+.solution-card--span-3 .solution-card__description {
+  max-width: 52ch;
+}
+
 .solution-card--coming {
   background: transparent;
 }
@@ -107,8 +129,16 @@ withDefaults(defineProps<Props>(), {
 }
 
 @media (max-width: 768px) {
-  .solution-card--span-2 {
+  .solution-card--span-2,
+  .solution-card--span-3 {
     grid-column: auto;
+  }
+
+  .solution-card--span-3 {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 2.5rem;
   }
 }
 </style>
