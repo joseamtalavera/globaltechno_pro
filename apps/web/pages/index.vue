@@ -13,7 +13,7 @@ useSeoMeta({
 <template>
   <div>
     <HomeEditorialHero />
-    <HomeServicesStripSection />
+    <HomeLanesCapsSection />
     <HomeSelectedWorkSection />
     <HomePrinciplesPreviewSection />
     <HomeProcessTimelineSection />
