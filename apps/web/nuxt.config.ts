@@ -26,16 +26,36 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'Globaltechno builds AI agents and intelligent automation for enterprises. Cybersecurity, digital identity, and cloud-native engineering.'
+            'Globaltechno builds custom software for the problems companies bring us. Full-stack apps, testing, and software architecture today. Web3, cybersecurity, and agentic systems coming next.'
         },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           name: 'theme-color',
-          content: '#0A0A0B'
+          content: '#FBFAF7'
+        },
+        {
+          property: 'og:site_name',
+          content: 'Globaltechno'
+        },
+        {
+          property: 'og:type',
+          content: 'website'
         },
         {
           property: 'og:image',
           content: `${process.env.NUXT_PUBLIC_SITE_URL ?? 'https://globaltechno.eu'}/og-default.svg`
+        },
+        {
+          property: 'og:image:width',
+          content: '1200'
+        },
+        {
+          property: 'og:image:height',
+          content: '630'
+        },
+        {
+          name: 'twitter:card',
+          content: 'summary_large_image'
         }
       ],
       link: [
