@@ -49,24 +49,25 @@ const tag = computed(() => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  border: none;
-  border-radius: var(--radius-md);
+  gap: 0.6rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
   font-family: var(--font-body);
   font-weight: 500;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
   cursor: pointer;
   text-decoration: none;
   transition:
-    background-color var(--duration-fast) ease,
-    color var(--duration-fast) ease,
-    border-color var(--duration-fast) ease,
-    transform var(--duration-fast) ease,
-    box-shadow var(--duration-fast) ease,
-    opacity var(--duration-fast) ease;
+    background-color 220ms var(--ease),
+    color 220ms var(--ease),
+    border-color 220ms var(--ease),
+    transform 220ms var(--ease),
+    box-shadow 220ms var(--ease),
+    opacity 220ms var(--ease);
 }
 
-.btn:hover {
+.btn:hover:not(:disabled) {
   transform: translateY(-1px);
 }
 
@@ -80,20 +81,31 @@ const tag = computed(() => {
   transform: none;
 }
 
-/* Sizes */
+/* Arrow companion: any element with .btn__arrow inside the slot lifts
+   diagonally on hover. Consumers do <UiButton>Foo <span class="btn__arrow">→</span></UiButton>. */
+.btn .btn__arrow {
+  display: inline-block;
+  transition: transform 240ms var(--ease);
+}
+
+.btn:hover:not(:disabled) .btn__arrow {
+  transform: translate(2px, -2px);
+}
+
+/* Sizes — matched to pivot_global reference (pill, 14px base) */
 .btn--sm {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
+  padding: 0.55rem 1rem;
+  font-size: 0.8125rem;
 }
 
 .btn--md {
-  padding: 0.75rem 1.5rem;
-  font-size: 0.95rem;
+  padding: 0.85rem 1.3rem;
+  font-size: 0.875rem;
 }
 
 .btn--lg {
-  padding: 1rem 2rem;
-  font-size: 1.05rem;
+  padding: 1rem 1.6rem;
+  font-size: 0.95rem;
 }
 
 /* Variants */
@@ -110,13 +122,13 @@ const tag = computed(() => {
 
 .btn--ghost-ink {
   background: transparent;
-  border: 1px solid var(--ink);
+  border-color: var(--line);
   color: var(--ink);
 }
 
 .btn--ghost-ink:hover:not(:disabled) {
-  background: var(--ink);
-  color: var(--paper);
+  border-color: var(--ink);
+  background: var(--paper-soft);
 }
 
 .btn--link-ink {
