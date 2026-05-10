@@ -13,10 +13,10 @@ useSeoMeta({
 <template>
   <div>
     <HomeEditorialHero />
-    <HomeSolutionsGridSection />
-    <HomeProcessTimelineSection />
+    <HomeServicesStripSection />
     <HomeSelectedWorkSection />
-    <HomeWhatsDifferentSection />
+    <HomePrinciplesPreviewSection />
+    <HomeProcessTimelineSection />
     <HomeClosingCtaSection />
   </div>
 </template>

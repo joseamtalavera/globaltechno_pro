@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+
 const heroRef = ref<HTMLElement | null>(null);
 const gx = ref(50);
 const gy = ref(50);
@@ -29,6 +31,8 @@ function onMouseLeave(): void {
   active.value = false;
 }
 
+const rotorWords = ['solution', 'answer', 'thing', 'fix'];
+
 const marqueeItems = [
   { label: 'Now', status: 'now' as const },
   { label: 'Full-stack apps' },
@@ -58,25 +62,32 @@ const marqueeItems = [
       />
 
       <div class="hero__content section__inner">
-        <p class="hero__eyebrow">Globaltechno OÜ · Tallinn</p>
+        <div class="hero__meta">
+          <span class="hero__meta-item"><b>Studio</b> · Globaltechno OÜ</span>
+          <span class="hero__meta-item"><b>Year</b> · 2026</span>
+          <span class="hero__meta-item"><b>Based</b> · Madrid + Buenos Aires</span>
+        </div>
 
         <h1 class="hero__title text-balance">
           Companies bring problems.<br>
-          We build <span class="hero__title-mark">the solution.</span>
+          We build <SharedRotorWord :words="rotorWords" />.
         </h1>
 
-        <p class="hero__subline">
-          Today: full-stack apps · testing · architecture.<br>
-          Coming: web3 · cybersecurity · agents.
-        </p>
+        <div class="hero__lower">
+          <p class="hero__lede">
+            An engineering studio for problems that don't fit a template.
+            Today: full-stack apps, testing, software architecture.
+            Coming: web3, cybersecurity, agentic systems.
+          </p>
 
-        <div class="hero__actions">
-          <UiButton variant="filled-ink" size="lg" to="/brief">
-            Start a project →
-          </UiButton>
-          <UiButton variant="ghost-ink" size="lg" to="/work">
-            See our work
-          </UiButton>
+          <div class="hero__actions">
+            <UiButton variant="filled-ink" size="lg" to="/contact">
+              Start a project <span class="btn__arrow">→</span>
+            </UiButton>
+            <UiButton variant="ghost-ink" size="lg" to="/work">
+              See our work
+            </UiButton>
+          </div>
         </div>
       </div>
     </div>
@@ -121,69 +132,82 @@ const marqueeItems = [
   z-index: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
+  gap: clamp(1.75rem, 4vw, 3rem);
+}
+
+/* Meta row */
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
-}
-
-.hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--line);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ink-mute);
-  margin-bottom: 0;
+  color: var(--ink-faint);
 }
 
-.hero__eyebrow::before {
-  content: '';
-  width: 22px;
-  height: 1px;
-  background: var(--accent);
+.hero__meta-item b {
+  color: var(--ink);
+  font-weight: 500;
 }
 
+/* Title */
 .hero__title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 7rem);
+  font-size: clamp(3rem, 9vw, 8rem);
   letter-spacing: -0.04em;
-  line-height: 1.02;
+  line-height: 0.95;
   color: var(--ink);
   max-width: 18ch;
+  text-wrap: balance;
 }
 
-.hero__title-mark {
-  font-style: italic;
-  color: var(--accent);
+/* Lower split: lede left, CTAs right */
+.hero__lower {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: end;
+  margin-top: clamp(2rem, 4vw, 3rem);
 }
 
-.hero__subline {
-  font-family: var(--font-body);
-  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-  line-height: 1.55;
-  color: var(--ink-mute);
-  max-width: 50ch;
+.hero__lede {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+  line-height: 1.45;
+  color: var(--ink-2);
+  max-width: 38ch;
+  margin: 0;
 }
 
 .hero__actions {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
-  margin-top: 1rem;
+  justify-content: flex-end;
+}
+
+@media (max-width: 820px) {
+  .hero__lower {
+    grid-template-columns: 1fr;
+  }
+  .hero__actions {
+    justify-content: flex-start;
+  }
 }
 
 @media (max-width: 640px) {
   .hero__title {
     max-width: 100%;
   }
-
   .hero__actions {
     width: 100%;
   }
-
   .hero__actions .btn {
     flex: 1 1 100%;
   }
