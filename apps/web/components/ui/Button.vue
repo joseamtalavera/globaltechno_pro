@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface Props {
-  variant?: 'filled' | 'ghost' | 'ghost-light';
+  variant?: 'filled' | 'ghost' | 'ghost-light' | 'filled-ink' | 'ghost-ink' | 'link-ink';
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   to?: string;
@@ -122,6 +122,56 @@ const tag = computed(() => {
 .btn--ghost-light:hover:not(:disabled) {
   background: rgba(0, 0, 0, 0.03);
   border-color: var(--color-text-secondary);
+}
+
+/* New light-context variants (post-pivot) */
+
+.btn--filled-ink {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.btn--filled-ink:hover:not(:disabled) {
+  background-color: var(--color-accent-hover);
+  box-shadow: 0 2px 14px var(--color-accent-glow);
+}
+
+.btn--ghost-ink {
+  background: transparent;
+  border: 1px solid var(--color-text-primary);
+  color: var(--color-text-primary);
+}
+
+.btn--ghost-ink:hover:not(:disabled) {
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+}
+
+.btn--link-ink {
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+  padding: 0;
+  border-radius: 0;
+  font-weight: 500;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+.btn--link-ink .btn__content::after {
+  content: '→';
+  display: inline-block;
+  margin-left: 0.4rem;
+  transition: transform var(--duration-fast) ease;
+}
+
+.btn--link-ink:hover:not(:disabled) {
+  transform: none;
+  text-decoration: underline;
+}
+
+.btn--link-ink:hover:not(:disabled) .btn__content::after {
+  transform: translateX(3px);
 }
 
 /* Loading */
