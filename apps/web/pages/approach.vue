@@ -6,249 +6,82 @@ useSeoMeta({
   ogTitle: 'Approach — Globaltechno'
 });
 
-interface LedgerCol {
-  heading: string;
-  items: string[];
-}
-
-interface Ledger {
+interface Lane {
   id: string;
   num: string;
   status: 'now' | 'coming';
-  statusLabel: string;
-  tag: string;
   title: string;
-  emphasis: string;
-  lede: string;
-  cols: [LedgerCol, LedgerCol, LedgerCol];
+  desc: string;
+  kicker: string;
+  iconPaths: string;
 }
 
-const lanes: Ledger[] = [
+const lanes: Lane[] = [
   {
     id: 'web',
-    num: '01',
+    num: '01 / Now',
     status: 'now',
-    statusLabel: 'Now · Live',
-    tag: '8 partners shipped',
-    title: 'Web',
-    emphasis: 'platforms',
-    lede:
-      'Production-grade web applications shipped end-to-end. We design the schema, write the API, ship the UI, and stand up the infra. No throwaway code. No half-finished frontends.',
-    cols: [
-      {
-        heading: 'Focus',
-        items: [
-          'Customer-facing web platforms',
-          'Member portals + ops dashboards',
-          'Payments, scheduling, content',
-          'Multi-region deployment'
-        ]
-      },
-      {
-        heading: 'Stack',
-        items: [
-          'Nuxt 3 / Next.js / Remix',
-          'Node + NestJS / Express',
-          'PostgreSQL via Prisma',
-          'AWS (ECS, RDS, CloudFront)'
-        ]
-      },
-      {
-        heading: 'How to engage',
-        items: [
-          'Problem call: 90 minutes',
-          'Scope week: paid, fixed price',
-          'Build sprints: 2–6 weeks each',
-          'Hand-off + 30-day support'
-        ]
-      }
-    ]
+    title: 'Web platforms',
+    desc:
+      'End-to-end product engineering — Next/Nuxt front, Node/Python back, infra you can actually maintain.',
+    kicker: 'Stack — TS · Nuxt · Postgres',
+    iconPaths:
+      '<rect x="3" y="6" width="30" height="22" rx="2"/><path d="M3 12h30M9 18h12M9 22h6"/>'
   },
   {
     id: 'testing',
-    num: '02',
+    num: '02 / Now',
     status: 'now',
-    statusLabel: 'Now · Live',
-    tag: 'Compliance-ready',
-    title: 'Testing &',
-    emphasis: 'QA',
-    lede:
-      'Test infrastructure your investors and regulators trust. Automated regression, performance, accessibility, and human-supervised compliance sign-off.',
-    cols: [
-      {
-        heading: 'Diagnose',
-        items: [
-          'Coverage + gap audit',
-          'Risk-weighted test plan',
-          'Tooling fit assessment'
-        ]
-      },
-      {
-        heading: 'Build',
-        items: [
-          'Unit / integration / E2E suites',
-          'Performance + a11y harness',
-          'CI orchestration + flake tracking'
-        ]
-      },
-      {
-        heading: 'Prove',
-        items: [
-          'Signed PDF report (NIS2 / GDPR / eIDAS 2.0)',
-          'Pen test on request',
-          'Continuous attestation'
-        ]
-      }
-    ]
+    title: 'Test infrastructure',
+    desc:
+      'QA platforms, harnesses and pipelines built around how your team actually ships. Codewright.co is one of ours.',
+    kicker: 'Stack — Playwright · k6 · CI',
+    iconPaths:
+      '<path d="M6 30V12l12-6 12 6v18"/><path d="M6 18l12 6 12-6M18 24v6"/><circle cx="18" cy="12" r="2.4" fill="currentColor"/>'
   },
   {
     id: 'architecture',
-    num: '03',
+    num: '03 / Now',
     status: 'now',
-    statusLabel: 'Now · Live',
-    tag: '2-week typical',
-    title: 'Software',
-    emphasis: 'architecture',
-    lede:
-      'System design before you spend the build budget. Constraint mapping, trade-off analysis, integration plan, scaling story — the things you want decided before code starts.',
-    cols: [
-      {
-        heading: 'Output',
-        items: [
-          'Architecture document + decision log',
-          'Tech stack proposal with reasoning',
-          'Risk + cost estimate',
-          'Reference implementation if useful'
-        ]
-      },
-      {
-        heading: 'Method',
-        items: [
-          'Stakeholder + constraint workshop',
-          'Cross-team trade-off sessions',
-          'Iterated review with engineering'
-        ]
-      },
-      {
-        heading: 'When',
-        items: [
-          'Greenfield kick-off',
-          'Pre-funding due diligence',
-          'Pre-rewrite triage'
-        ]
-      }
-    ]
+    title: 'System architecture',
+    desc:
+      'Boring choices made well. Service boundaries, data shapes and on-call ergonomics that survive year three.',
+    kicker: 'Stack — Postgres · Redis · K8s',
+    iconPaths:
+      '<rect x="4" y="4" width="12" height="12" rx="1.5"/><rect x="20" y="4" width="12" height="12" rx="1.5"/><rect x="4" y="20" width="12" height="12" rx="1.5"/><rect x="20" y="20" width="12" height="12" rx="1.5"/><path d="M16 10h4M10 16v4M26 16v4M16 26h4"/>'
   },
   {
     id: 'web3',
-    num: '04',
+    num: '04 / Next',
     status: 'coming',
-    statusLabel: 'Next · Design partners open',
-    tag: '2 pilots in flight',
-    title: 'Web3 &',
-    emphasis: 'on-chain',
-    lede:
-      'We\'re picking the parts of Web3 that genuinely need to be on-chain — signing, settlement, provenance — and shipping them as plain-looking software for non-crypto teams.',
-    cols: [
-      {
-        heading: 'Focus',
-        items: [
-          'Legal-grade signing',
-          'Settlement bridges',
-          'Provenance + audit trails'
-        ]
-      },
-      {
-        heading: 'Stack',
-        items: [
-          'EVM + L2s',
-          'Account abstraction',
-          'Off-chain indexers'
-        ]
-      },
-      {
-        heading: 'How to engage',
-        items: [
-          'Design partner: 2 slots',
-          '2-week problem call',
-          'Pilot in 6–8 weeks'
-        ]
-      }
-    ]
+    title: 'Web3 & on-chain',
+    desc:
+      'Practical contracts, signing flows and bridges. Skipping the hype — building the parts that need to be on-chain.',
+    kicker: 'Design partners — open',
+    iconPaths:
+      '<path d="M18 4l14 8v12l-14 8L4 24V12z"/><path d="M18 4v28M4 12l14 8 14-8"/>'
   },
   {
     id: 'cyber',
-    num: '05',
+    num: '05 / Next',
     status: 'coming',
-    statusLabel: 'Next · Design partners open',
-    tag: 'Hiring lead',
-    title: 'Cyber',
-    emphasis: 'security',
-    lede:
-      'A practice for product teams, not a checklist for auditors. Threat-model, harden, prove — done with the team, not at them.',
-    cols: [
-      {
-        heading: 'Diagnose',
-        items: [
-          'Threat model w/ engineers',
-          'Lightweight pentest',
-          'Posture scorecard'
-        ]
-      },
-      {
-        heading: 'Harden',
-        items: [
-          'Authn/z rebuilds',
-          'Secrets + key mgmt',
-          'Supply-chain controls'
-        ]
-      },
-      {
-        heading: 'Prove',
-        items: [
-          'Continuous attestation',
-          'SOC2-friendly evidence',
-          'Tabletop exercises'
-        ]
-      }
-    ]
+    title: 'Cybersecurity',
+    desc:
+      'Threat modelling, audits and hardening for product teams. Not a checklist — a defensible posture.',
+    kicker: 'Design partners — open',
+    iconPaths:
+      '<path d="M18 4l12 5v9c0 7-5 13-12 14C11 31 6 25 6 18V9l12-5z"/><path d="M13 18l4 4 7-7"/>'
   },
   {
     id: 'agents',
-    num: '06',
+    num: '06 / Next',
     status: 'coming',
-    statusLabel: 'Next · Design partners open',
-    tag: '3 pilots in flight',
-    title: 'AI',
-    emphasis: 'agents',
-    lede:
-      'Agents that run inside your stack — not chatbots in front of it. Tool use, deterministic guardrails, evals, and on-call hand-offs to humans when they should.',
-    cols: [
-      {
-        heading: 'Build',
-        items: [
-          'Toolset + memory design',
-          'Deterministic guards',
-          'Cost-aware routing'
-        ]
-      },
-      {
-        heading: 'Trust',
-        items: [
-          'Eval harness, not vibes',
-          'Replayable traces',
-          'Human-in-loop hand-offs'
-        ]
-      },
-      {
-        heading: 'Ship',
-        items: [
-          '4-week proof-of-life',
-          'Monitoring + drift alerts',
-          'Rollback by design'
-        ]
-      }
-    ]
+    title: 'AI agents',
+    desc:
+      'Agents that actually run inside your stack — not chatbots. Tool use, evaluations and on-call hand-offs.',
+    kicker: 'Design partners — open',
+    iconPaths:
+      '<circle cx="18" cy="14" r="6"/><path d="M8 30c0-5 4-8 10-8s10 3 10 8"/><path d="M18 8v-3M12 11l-2-2M24 11l2-2"/>'
   }
 ];
 
@@ -308,43 +141,33 @@ const methodology = [
       </div>
     </section>
 
-    <section class="ledger-list section section--light">
-      <div class="ledger-list__inner section__inner">
-        <SharedScrollReveal
-          v-for="lane in lanes"
-          :key="lane.id"
-        >
-          <article
-            :id="lane.id"
-            class="ledger"
-            :class="{ 'ledger--coming': lane.status === 'coming' }"
+    <section class="caps section section--light">
+      <div class="caps__inner section__inner section__inner--narrow">
+        <div class="caps__grid">
+          <SharedScrollReveal
+            v-for="(lane, i) in lanes"
+            :key="lane.id"
+            :delay="i * 60"
           >
-            <div class="ledger__meta">
-              <span class="ledger__num">{{ lane.num }}</span>
-              <span class="pill" :class="`pill--${lane.status}`">
-                <span class="pill__dot" aria-hidden="true" />
-                {{ lane.statusLabel }}
-              </span>
-              <span class="ledger__tag-static">{{ lane.tag }}</span>
-            </div>
+            <article
+              :id="lane.id"
+              class="cap"
+              :class="{ 'cap--coming': lane.status === 'coming' }"
+            >
+              <span class="cap__tag">{{ lane.status === 'now' ? 'Live' : 'Coming' }}</span>
+              <span class="cap__num">{{ lane.num }}</span>
 
-            <div class="ledger__body">
-              <h2 class="ledger__title text-balance">
-                {{ lane.title }} <em>{{ lane.emphasis }}</em>.
-              </h2>
-              <p class="ledger__lede">{{ lane.lede }}</p>
-
-              <div class="ledger__cols">
-                <div v-for="col in lane.cols" :key="col.heading" class="ledger__col">
-                  <h4 class="ledger__col-heading">{{ col.heading }}</h4>
-                  <ul class="ledger__col-list">
-                    <li v-for="item in col.items" :key="item">{{ item }}</li>
-                  </ul>
-                </div>
+              <div class="cap__icon" aria-hidden="true">
+                <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" v-html="lane.iconPaths" />
               </div>
-            </div>
-          </article>
-        </SharedScrollReveal>
+
+              <h2 class="cap__title">{{ lane.title }}</h2>
+              <p class="cap__desc">{{ lane.desc }}</p>
+
+              <span class="cap__kicker">{{ lane.kicker }}</span>
+            </article>
+          </SharedScrollReveal>
+        </div>
       </div>
     </section>
 
@@ -445,156 +268,136 @@ const methodology = [
   max-width: 56ch;
 }
 
-/* ============================================================== Ledgers */
-.ledger-list {
+/* ============================================================== Caps grid */
+.caps {
   padding-top: 2rem;
 }
 
-.ledger-list__inner {
-  display: flex;
-  flex-direction: column;
+.caps__inner {
+  max-width: var(--max-width-narrow);
+  margin: 0 auto;
 }
 
-.ledger {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: clamp(2rem, 4vw, 4rem);
-  padding: clamp(2.5rem, 5vw, 4rem) 0;
-  border-bottom: 1px solid var(--line);
-  position: relative;
-}
-
-.ledger:last-of-type {
-  border-bottom: 0;
-}
-
-.ledger--coming {
-  background:
-    linear-gradient(180deg, transparent, var(--accent-wash) 100%);
-}
-
-.ledger__meta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  padding-top: 0.4rem;
-  position: sticky;
-  top: 5rem;
-  align-self: start;
-  height: fit-content;
-}
-
-.ledger__num {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(3.5rem, 7vw, 5.5rem);
-  line-height: 1;
-  color: var(--accent);
-  letter-spacing: -0.03em;
-}
-
-.ledger__tag-static {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-
-.ledger__body {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.ledger__title {
-  font-family: var(--font-display);
-  font-size: clamp(2.25rem, 5vw, 4rem);
-  letter-spacing: -0.03em;
-  line-height: 1;
-  color: var(--ink);
-  margin: 0;
-}
-
-.ledger__title em {
-  font-style: italic;
-  color: var(--accent);
-}
-
-.ledger__lede {
-  font-family: var(--font-body);
-  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
-  line-height: 1.55;
-  color: var(--ink-2);
-  max-width: 60ch;
-  margin: 0;
-}
-
-.ledger__cols {
+.caps__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-top: 1rem;
-  padding-top: 1.5rem;
-  border-top: 1px dashed var(--line);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
 }
 
-.ledger__col-heading {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin: 0 0 0.85rem;
-  font-weight: 500;
-}
-
-.ledger__col-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-}
-
-.ledger__col-list li {
+.cap {
   position: relative;
-  padding-left: 1rem;
-  font-size: 0.92rem;
-  line-height: 1.5;
+  padding: clamp(1.6rem, 3vw, 2.4rem);
+  background: var(--paper);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  transition: background 360ms var(--ease);
+}
+
+.cap:hover {
+  background: var(--paper-soft);
+}
+
+.cap__num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: 0.1em;
+  display: inline-block;
+}
+
+.cap__icon {
+  width: 36px;
+  height: 36px;
+  margin-top: 0.4rem;
   color: var(--ink);
 }
 
-.ledger__col-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.65rem;
-  width: 8px;
-  height: 1px;
-  background: var(--accent);
+.cap__icon svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.2;
 }
 
-@media (max-width: 900px) {
-  .ledger {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-  .ledger__meta {
-    position: static;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
-  }
-  .ledger__num {
-    font-size: 3rem;
-  }
-  .ledger__cols {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
+.cap__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin: 1.4rem 0 0.6rem;
+  color: var(--ink);
+}
+
+.cap__desc {
+  color: var(--ink-mute);
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0 0 2.4rem;
+  max-width: 32ch;
+}
+
+.cap__kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.cap__tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-full);
+  background: var(--paper);
+}
+
+/* Coming cards */
+.cap--coming .cap__title,
+.cap--coming .cap__desc,
+.cap--coming .cap__num,
+.cap--coming .cap__kicker {
+  color: var(--ink-faint);
+}
+
+.cap--coming .cap__icon {
+  color: var(--ink-faint);
+}
+
+.cap--coming .cap__tag {
+  color: var(--accent);
+  border-color: color-mix(in oklch, var(--accent) 40%, var(--paper));
+  background: var(--accent-wash);
+}
+
+.cap--coming::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0 7px,
+    color-mix(in oklch, var(--ink) 4%, transparent) 7px 8px
+  );
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+@media (max-width: 980px) {
+  .caps__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .caps__grid { grid-template-columns: 1fr; }
 }
 
 /* ============================================================== Methodology */
