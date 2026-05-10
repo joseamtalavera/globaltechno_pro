@@ -27,11 +27,11 @@ export class ContactService {
     const lead = await this.prisma.contactLead.create({
       data: {
         name: dto.name,
-        company: dto.company,
+        company: dto.company ?? null,
         email: dto.email.toLowerCase(),
         message: dto.message,
         consent: dto.consent,
-        serviceInterest: dto.serviceInterest,
+        serviceInterest: dto.serviceInterest ?? null,
         ipHash,
         userAgent: sanitizedAgent
       }
