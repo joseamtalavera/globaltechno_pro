@@ -59,7 +59,7 @@ onUnmounted(() => {
 
     <nav class="navbar__capsule" aria-label="Main navigation">
       <NuxtLink to="/" class="navbar__brand" aria-label="Globaltechno home">
-        <span class="navbar__wordmark">Globaltechno<span class="navbar__dot" aria-hidden="true">.</span></span>
+        <span class="navbar__wordmark">Globaltechno</span>
       </NuxtLink>
 
       <div class="navbar__links" :class="{ 'navbar__links--open': mobileOpen }">
@@ -85,6 +85,7 @@ onUnmounted(() => {
           >
             EN
           </button>
+          <span class="navbar__locale-sep" aria-hidden="true">/</span>
           <button
             type="button"
             class="navbar__locale-btn"
@@ -95,11 +96,6 @@ onUnmounted(() => {
             ES
           </button>
         </div>
-
-        <a href="mailto:hello@globaltechno.eu" class="navbar__contact">
-          <span class="navbar__contact-icon" aria-hidden="true">✉</span>
-          <span class="navbar__contact-label">hello@globaltechno.eu</span>
-        </a>
 
         <NuxtLink to="/brief" class="navbar__cta">
           Start a project
@@ -138,10 +134,10 @@ onUnmounted(() => {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   width: 100%;
   max-width: var(--max-width);
-  padding: 0.5rem 0.55rem 0.5rem 1.6rem;
+  padding: 0.4rem 0.45rem 0.4rem 1.2rem;
   background: color-mix(in oklch, var(--paper-soft) 92%, transparent);
   border: 1px solid var(--line);
   border-radius: var(--radius-full);
@@ -174,11 +170,6 @@ onUnmounted(() => {
   font-weight: 400;
   line-height: 1;
   color: var(--ink);
-  position: relative;
-}
-
-.navbar__dot {
-  color: var(--accent);
 }
 
 /* Center nav links */
@@ -186,7 +177,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .navbar__link {
@@ -222,72 +213,43 @@ onUnmounted(() => {
 .navbar__cluster {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 
-/* Locale segmented pill */
+/* Locale toggle — minimal text pair */
 .navbar__locale {
   display: inline-flex;
   align-items: center;
-  background: var(--paper-deep);
-  border-radius: var(--radius-full);
-  padding: 3px;
-  border: 1px solid var(--line);
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  padding: 0 0.35rem;
 }
 
 .navbar__locale-btn {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
-  font-weight: 600;
-  padding: 0.35rem 0.7rem;
   border: none;
   background: transparent;
-  color: var(--ink-mute);
-  border-radius: var(--radius-full);
+  color: var(--ink-faint);
   cursor: pointer;
-  transition:
-    background var(--duration-fast) ease,
-    color var(--duration-fast) ease;
+  padding: 0.25rem 0.1rem;
+  font: inherit;
+  letter-spacing: inherit;
+  transition: color var(--duration-fast) ease;
 }
 
 .navbar__locale-btn:hover {
-  color: var(--ink);
+  color: var(--ink-mute);
 }
 
 .navbar__locale-btn.is-on {
-  background: var(--ink);
-  color: var(--paper);
-}
-
-/* Contact pill */
-.navbar__contact {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  color: var(--ink);
-  text-decoration: none;
-  padding: 0.5rem 0.95rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-full);
-  background: var(--paper-soft);
-  transition:
-    border-color var(--duration-fast) ease,
-    color var(--duration-fast) ease;
-}
-
-.navbar__contact:hover {
-  border-color: var(--ink-faint);
   color: var(--ink);
 }
 
-.navbar__contact-icon {
-  display: inline-block;
-  color: var(--ink-mute);
-  font-size: 0.9rem;
-  line-height: 1;
+.navbar__locale-sep {
+  color: var(--line);
+  user-select: none;
 }
 
 /* CTA filled pill */
@@ -356,16 +318,6 @@ onUnmounted(() => {
 }
 
 /* Responsive */
-@media (max-width: 1100px) {
-  .navbar__contact-label {
-    display: none;
-  }
-
-  .navbar__contact {
-    padding: 0.5rem 0.6rem;
-  }
-}
-
 @media (max-width: 900px) {
   .navbar__locale {
     display: none;
@@ -408,7 +360,6 @@ onUnmounted(() => {
     color: var(--ink);
   }
 
-  .navbar__contact,
   .navbar__cta {
     display: none;
   }
