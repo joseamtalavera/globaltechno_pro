@@ -38,7 +38,7 @@ const { elementRef, isVisible } = useScrollAnimation({ threshold: 0.4 });
   font-family: var(--font-display);
   font-size: clamp(3rem, 6vw, 5rem);
   line-height: 1;
-  color: var(--color-accent);
+  color: var(--accent);
   letter-spacing: -0.04em;
 }
 
@@ -49,7 +49,7 @@ const { elementRef, isVisible } = useScrollAnimation({ threshold: 0.4 });
   font-size: clamp(1.75rem, 3vw, 2.4rem);
   line-height: 1.1;
   letter-spacing: -0.025em;
-  color: var(--color-text-muted);
+  color: var(--ink-faint);
 }
 
 .process-step__title-base {
@@ -59,7 +59,7 @@ const { elementRef, isVisible } = useScrollAnimation({ threshold: 0.4 });
 .process-step__title-fill {
   position: absolute;
   inset: 0;
-  color: var(--color-text-primary);
+  color: var(--ink);
   clip-path: inset(0 100% 0 0);
   transition: clip-path 1.4s var(--ease-out);
   pointer-events: none;
@@ -72,13 +72,13 @@ const { elementRef, isVisible } = useScrollAnimation({ threshold: 0.4 });
 .process-step__description {
   font-size: 0.95rem;
   line-height: 1.55;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   max-width: 32ch;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .process-step__title {
-    color: var(--color-text-primary);
+    color: var(--ink);
   }
   .process-step__title-fill {
     display: none;

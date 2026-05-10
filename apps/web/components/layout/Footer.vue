@@ -56,7 +56,7 @@ const siteLinks = [
 <style scoped>
 .footer {
   padding: var(--section-padding-y) var(--section-padding-x) 2.5rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--line);
 }
 
 .footer__inner {
@@ -69,7 +69,7 @@ const siteLinks = [
   grid-template-columns: 1.5fr 2fr;
   gap: 4rem;
   padding-bottom: 3rem;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--line);
 }
 
 .footer__brand {
@@ -83,7 +83,7 @@ const siteLinks = [
   align-items: center;
   gap: 0.6rem;
   text-decoration: none;
-  color: var(--color-text-primary);
+  color: var(--ink);
 }
 
 .footer__logo {
@@ -96,7 +96,7 @@ const siteLinks = [
   font-family: var(--font-display);
   font-size: 1.35rem;
   line-height: 1.3;
-  color: var(--color-text-primary);
+  color: var(--ink);
   max-width: 360px;
   letter-spacing: -0.015em;
 }
@@ -112,7 +112,7 @@ const siteLinks = [
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   margin-bottom: 1.25rem;
 }
 
@@ -127,18 +127,18 @@ const siteLinks = [
 
 .footer__nav-link {
   font-size: 0.925rem;
-  color: var(--color-text-primary);
+  color: var(--ink);
   text-decoration: none;
   transition: color var(--duration-fast) ease;
 }
 
 .footer__nav-link:hover {
-  color: var(--color-accent);
+  color: var(--accent);
 }
 
 .footer__nav-static {
   font-size: 0.925rem;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
 }
 
 .footer__bottom {
@@ -151,7 +151,7 @@ const siteLinks = [
 .footer__copyright,
 .footer__location {
   font-size: 0.8rem;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   font-family: var(--font-mono);
   letter-spacing: 0.04em;
 }

@@ -160,19 +160,19 @@ const stack = [
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   margin-bottom: 1.5rem;
 }
 
 .cs-hero__eyebrow a {
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   border-bottom: 1px solid transparent;
   transition: color var(--duration-fast) ease, border-color var(--duration-fast) ease;
 }
 
 .cs-hero__eyebrow a:hover {
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent);
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 .cs-hero__title {
@@ -186,14 +186,14 @@ const stack = [
   font-family: var(--font-mono);
   font-size: 0.85rem;
   letter-spacing: 0.04em;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   margin-bottom: 2rem;
 }
 
 .cs-hero__summary {
   font-size: clamp(1.15rem, 1.7vw, 1.35rem);
   line-height: 1.55;
-  color: var(--color-text-primary);
+  color: var(--ink);
   max-width: 60ch;
   margin-bottom: 2rem;
 }
@@ -205,15 +205,15 @@ const stack = [
   font-family: var(--font-mono);
   font-size: 0.85rem;
   letter-spacing: 0.04em;
-  color: var(--color-text-primary);
-  border-bottom: 1px solid var(--color-text-primary);
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
   padding-bottom: 2px;
   transition: color var(--duration-fast) ease, border-color var(--duration-fast) ease;
 }
 
 .cs-hero__live:hover {
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent);
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 .cs-cover {
@@ -225,15 +225,15 @@ const stack = [
   aspect-ratio: 16 / 9;
   border-radius: var(--radius-xl);
   background:
-    radial-gradient(ellipse at 75% 30%, var(--color-accent-soft), transparent 55%),
+    radial-gradient(ellipse at 75% 30%, var(--accent-wash), transparent 55%),
     linear-gradient(135deg, #0E0E10 0%, #1A1A2E 100%);
-  color: var(--color-bg);
+  color: var(--paper);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--line);
   overflow: hidden;
 }
 
@@ -241,7 +241,7 @@ const stack = [
   font-family: var(--font-display);
   font-size: clamp(3rem, 8vw, 6rem);
   letter-spacing: -0.04em;
-  color: var(--color-bg);
+  color: var(--paper);
 }
 
 .cs-cover__sub {
@@ -249,7 +249,7 @@ const stack = [
   font-size: 0.85rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--accent);
 }
 
 .cs-block__inner {
@@ -267,7 +267,7 @@ const stack = [
 .cs-block__body {
   font-size: 1.075rem;
   line-height: 1.7;
-  color: var(--color-text-primary);
+  color: var(--ink);
   max-width: 62ch;
   margin-bottom: 1.25rem;
 }
@@ -290,7 +290,7 @@ const stack = [
   padding-left: 1.75rem;
   font-size: 1.025rem;
   line-height: 1.65;
-  color: var(--color-text-primary);
+  color: var(--ink);
 }
 
 .cs-block__list li::before {
@@ -300,12 +300,12 @@ const stack = [
   top: 0.7rem;
   width: 14px;
   height: 1px;
-  background: var(--color-accent);
+  background: var(--accent);
 }
 
 .cs-block__list li strong {
   font-weight: 500;
-  color: var(--color-text-primary);
+  color: var(--ink);
 }
 
 .cs-stack__inner {
@@ -327,9 +327,9 @@ const stack = [
   font-size: 0.78rem;
   letter-spacing: 0.04em;
   padding: 0.4rem 0.85rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--line);
   border-radius: var(--radius-full);
-  color: var(--color-text-primary);
-  background: var(--color-bg-card);
+  color: var(--ink);
+  background: var(--paper-soft);
 }
 </style>

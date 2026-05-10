@@ -41,8 +41,8 @@ withDefaults(defineProps<Props>(), {
   flex-direction: column;
   gap: 2.5rem;
   padding: 2rem;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   transition:
     transform var(--duration-normal) var(--ease-out),
@@ -53,7 +53,7 @@ withDefaults(defineProps<Props>(), {
 
 .solution-card:hover {
   transform: translateY(-2px);
-  border-color: var(--color-border-strong);
+  border-color: var(--ink-faint);
   box-shadow: 0 8px 28px rgba(14, 14, 16, 0.05);
 }
 
@@ -103,7 +103,7 @@ withDefaults(defineProps<Props>(), {
   font-size: 0.78rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--ink-faint);
 }
 
 .solution-card__body {
@@ -118,13 +118,13 @@ withDefaults(defineProps<Props>(), {
   font-size: clamp(1.6rem, 2.6vw, 2.1rem);
   line-height: 1.1;
   letter-spacing: -0.025em;
-  color: var(--color-text-primary);
+  color: var(--ink);
 }
 
 .solution-card__description {
   font-size: 0.95rem;
   line-height: 1.55;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   max-width: 38ch;
 }
 

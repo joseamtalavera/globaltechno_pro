@@ -153,7 +153,7 @@ const dontDo = [
   margin-top: 1.5rem;
   font-size: clamp(1.1rem, 1.6vw, 1.3rem);
   line-height: 1.6;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   max-width: 60ch;
 }
 
@@ -184,11 +184,11 @@ const dontDo = [
   align-items: baseline;
   gap: 2rem;
   padding: 2rem 0;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--line);
 }
 
 .about-principles > :last-child .about-principles__item {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--line);
 }
 
 .about-principles__number {
@@ -196,7 +196,7 @@ const dontDo = [
   font-size: 0.78rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--accent);
 }
 
 .about-principles__title {
@@ -204,14 +204,14 @@ const dontDo = [
   font-size: clamp(1.5rem, 3vw, 2.1rem);
   letter-spacing: -0.025em;
   line-height: 1.15;
-  color: var(--color-text-primary);
+  color: var(--ink);
   margin-bottom: 0.75rem;
 }
 
 .about-principles__description {
   font-size: 1.025rem;
   line-height: 1.6;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   max-width: 56ch;
 }
 
@@ -229,34 +229,34 @@ const dontDo = [
   font-size: clamp(1.5rem, 3vw, 2.25rem);
   letter-spacing: -0.025em;
   line-height: 1.25;
-  color: var(--color-text-primary);
+  color: var(--ink);
   padding: 1.75rem 0;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--line);
 }
 
 .about-dont > :last-child .about-dont__item {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--line);
 }
 
 /* Where */
 .about-where__body {
   font-size: 1.075rem;
   line-height: 1.7;
-  color: var(--color-text-primary);
+  color: var(--ink);
   max-width: 62ch;
   margin-bottom: 1rem;
 }
 
 .about-where__email {
-  color: var(--color-text-primary);
-  border-bottom: 1px solid var(--color-text-primary);
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
   padding-bottom: 1px;
   transition: color var(--duration-fast) ease, border-color var(--duration-fast) ease;
 }
 
 .about-where__email:hover {
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent);
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 @media (max-width: 640px) {

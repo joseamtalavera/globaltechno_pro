@@ -86,7 +86,7 @@ onUnmounted(() => {
 .navbar--scrolled {
   background: rgba(251, 250, 247, 0.82);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--line);
 }
 
 .navbar__skip {
@@ -95,8 +95,8 @@ onUnmounted(() => {
   top: -100%;
   z-index: 200;
   padding: 0.5rem 1rem;
-  background: var(--color-accent);
-  color: var(--color-bg);
+  background: var(--accent);
+  color: var(--paper);
   border-radius: var(--radius-sm);
   font-weight: 500;
 }
@@ -119,7 +119,7 @@ onUnmounted(() => {
   align-items: center;
   gap: 0.6rem;
   text-decoration: none;
-  color: var(--color-text-primary);
+  color: var(--ink);
 }
 
 .navbar__logo {
@@ -137,7 +137,7 @@ onUnmounted(() => {
 .navbar__link {
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   text-decoration: none;
   transition: color var(--duration-fast) ease;
   position: relative;
@@ -145,7 +145,7 @@ onUnmounted(() => {
 
 .navbar__link:hover,
 .navbar__link--active {
-  color: var(--color-text-primary);
+  color: var(--ink);
 }
 
 .navbar__link--active::after {
@@ -155,7 +155,7 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   height: 1px;
-  background: var(--color-accent);
+  background: var(--accent);
 }
 
 .navbar__actions {
@@ -181,7 +181,7 @@ onUnmounted(() => {
   display: block;
   width: 100%;
   height: 1.5px;
-  background: var(--color-text-primary);
+  background: var(--ink);
   border-radius: 1px;
   transition:
     transform var(--duration-normal) var(--ease-out),
@@ -207,7 +207,7 @@ onUnmounted(() => {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--color-bg);
+    background: var(--paper);
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -224,7 +224,7 @@ onUnmounted(() => {
 
   .navbar__link {
     font-size: 1.5rem;
-    color: var(--color-text-primary);
+    color: var(--ink);
   }
 
   .navbar__hamburger {

@@ -223,7 +223,7 @@ function toggle(num: string): void {
   margin-top: 1.25rem;
   font-size: clamp(1.05rem, 1.5vw, 1.25rem);
   line-height: 1.6;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   max-width: 56ch;
 }
 
@@ -252,7 +252,7 @@ function toggle(num: string): void {
 }
 
 .solutions-list__trigger:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--accent);
   outline-offset: 4px;
 }
 
@@ -261,14 +261,14 @@ function toggle(num: string): void {
   bottom: 1.5rem;
   right: 2rem;
   font-size: 1.1rem;
-  color: var(--color-text-muted);
+  color: var(--ink-faint);
   transition: transform var(--duration-normal) var(--ease-out);
   pointer-events: none;
 }
 
 .solutions-list__row.is-open .solutions-list__chevron {
   transform: rotate(180deg);
-  color: var(--color-accent);
+  color: var(--accent);
 }
 
 .solutions-list__detail {
@@ -293,7 +293,7 @@ function toggle(num: string): void {
   font-family: var(--font-display);
   font-size: clamp(1.25rem, 2vw, 1.6rem);
   line-height: 1.4;
-  color: var(--color-text-primary);
+  color: var(--ink);
   letter-spacing: -0.015em;
   max-width: 60ch;
   margin-bottom: 2.5rem;
@@ -311,7 +311,7 @@ function toggle(num: string): void {
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   margin-bottom: 1rem;
   font-weight: 500;
 }
@@ -328,7 +328,7 @@ function toggle(num: string): void {
 .solutions-list__deliverables li {
   position: relative;
   padding-left: 1.5rem;
-  color: var(--color-text-primary);
+  color: var(--ink);
   font-size: 0.95rem;
   line-height: 1.55;
 }
@@ -340,13 +340,13 @@ function toggle(num: string): void {
   top: 0.7rem;
   width: 12px;
   height: 1px;
-  background: var(--color-accent);
+  background: var(--accent);
 }
 
 .solutions-list__when {
   font-size: 0.95rem;
   line-height: 1.55;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   max-width: 42ch;
 }
 

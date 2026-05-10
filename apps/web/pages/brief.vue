@@ -384,7 +384,7 @@ async function submit(): Promise<void> {
   margin-top: 1.25rem;
   font-size: clamp(1.05rem, 1.5vw, 1.25rem);
   line-height: 1.6;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
 }
 
 .brief__form-section {
@@ -405,16 +405,16 @@ async function submit(): Promise<void> {
   gap: 1rem;
   margin-bottom: 3.5rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--line);
 }
 
 .brief__progress-dot {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 1px solid var(--color-border-strong);
-  background: var(--color-bg-card);
-  color: var(--color-text-muted);
+  border: 1px solid var(--ink-faint);
+  background: var(--paper-soft);
+  color: var(--ink-faint);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -429,15 +429,15 @@ async function submit(): Promise<void> {
 }
 
 .brief__progress-dot--active {
-  background: var(--color-text-primary);
-  color: var(--color-bg);
-  border-color: var(--color-text-primary);
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
 }
 
 .brief__progress-dot--done {
-  background: var(--color-accent);
-  color: var(--color-bg);
-  border-color: var(--color-accent);
+  background: var(--accent);
+  color: var(--paper);
+  border-color: var(--accent);
 }
 
 .brief__progress-line {
@@ -456,14 +456,14 @@ async function submit(): Promise<void> {
   font-size: clamp(2rem, 4.5vw, 3.25rem);
   letter-spacing: -0.03em;
   line-height: 1.05;
-  color: var(--color-text-primary);
+  color: var(--ink);
   margin: 0;
 }
 
 .brief__step-sub {
   font-size: 1.05rem;
   line-height: 1.55;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   max-width: 56ch;
   margin: -0.25rem 0 1.25rem;
 }
@@ -483,12 +483,12 @@ async function submit(): Promise<void> {
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--ink-faint);
   margin-top: -0.5rem;
 }
 
 .brief__hint-dim {
-  color: var(--color-success);
+  color: var(--success);
 }
 
 /* Chips */
@@ -502,8 +502,8 @@ async function submit(): Promise<void> {
 .brief__chip {
   position: relative;
   text-align: left;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: 1.1rem 1.25rem;
   cursor: pointer;
@@ -517,25 +517,25 @@ async function submit(): Promise<void> {
 }
 
 .brief__chip:hover {
-  border-color: var(--color-border-strong);
+  border-color: var(--ink-faint);
   transform: translateY(-1px);
 }
 
 .brief__chip--selected {
-  background: var(--color-accent-soft);
-  border-color: var(--color-accent);
+  background: var(--accent-wash);
+  border-color: var(--accent);
 }
 
 .brief__chip-label {
   font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 500;
-  color: var(--color-text-primary);
+  color: var(--ink);
 }
 
 .brief__chip-description {
   font-size: 0.85rem;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   line-height: 1.4;
 }
 
@@ -563,16 +563,16 @@ async function submit(): Promise<void> {
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   font-weight: 500;
 }
 
 .brief__required {
-  color: var(--color-accent);
+  color: var(--accent);
 }
 
 .brief__optional {
-  color: var(--color-text-muted);
+  color: var(--ink-faint);
   text-transform: none;
   letter-spacing: 0;
   font-size: 0.72rem;
@@ -588,7 +588,7 @@ async function submit(): Promise<void> {
   gap: 0.7rem;
   font-size: 0.9rem;
   line-height: 1.5;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   cursor: pointer;
   margin-top: 0.5rem;
 }
@@ -596,12 +596,12 @@ async function submit(): Promise<void> {
 .brief__consent input[type='checkbox'] {
   width: auto;
   margin-top: 0.2rem;
-  accent-color: var(--color-accent);
+  accent-color: var(--accent);
 }
 
 .brief__error {
   font-size: 0.9rem;
-  color: var(--color-danger);
+  color: var(--danger);
   margin-top: -0.25rem;
 }
 
@@ -620,7 +620,7 @@ async function submit(): Promise<void> {
 }
 
 .brief__check {
-  color: var(--color-accent);
+  color: var(--accent);
   margin-bottom: 1rem;
 }
 

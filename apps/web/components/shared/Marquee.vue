@@ -38,11 +38,11 @@ const duplicated = computed<MarqueeItem[]>(() => [...props.items, ...props.items
 <style scoped>
 .marquee {
   overflow: hidden;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   padding: 1.1rem 0;
   user-select: none;
-  background: var(--color-bg);
+  background: var(--paper);
 }
 
 .marquee__track {
@@ -64,23 +64,23 @@ const duplicated = computed<MarqueeItem[]>(() => [...props.items, ...props.items
   font-size: 0.78rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   flex-shrink: 0;
 }
 
 .marquee__item::after {
   content: '·';
   margin: 0 2rem;
-  color: var(--color-border-strong);
+  color: var(--ink-faint);
 }
 
 .marquee__item--now {
-  color: var(--color-text-primary);
+  color: var(--ink);
   font-weight: 500;
 }
 
 .marquee__item--coming {
-  color: var(--color-accent);
+  color: var(--accent);
   font-weight: 500;
 }
 

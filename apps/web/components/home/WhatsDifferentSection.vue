@@ -50,11 +50,11 @@ const statements = [
   align-items: baseline;
   gap: 3rem;
   padding: 2.5rem 0;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--line);
 }
 
 .whats-different__list > :last-child .whats-different__item {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--line);
 }
 
 .whats-different__statement {
@@ -62,14 +62,14 @@ const statements = [
   font-size: clamp(2rem, 5vw, 3.75rem);
   letter-spacing: -0.03em;
   line-height: 1.05;
-  color: var(--color-text-primary);
+  color: var(--ink);
 }
 
 .whats-different__tag {
   font-family: var(--font-mono);
   font-size: 0.85rem;
   letter-spacing: 0.04em;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   line-height: 1.55;
   max-width: 36ch;
   justify-self: end;

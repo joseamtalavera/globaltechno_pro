@@ -96,30 +96,30 @@ const tag = computed(() => {
 /* Variants */
 
 .btn--filled-ink {
-  background-color: var(--color-accent);
-  color: var(--color-bg);
+  background-color: var(--accent);
+  color: var(--paper);
 }
 
 .btn--filled-ink:hover:not(:disabled) {
-  background-color: var(--color-accent-hover);
-  box-shadow: 0 2px 14px var(--color-accent-glow);
+  background-color: var(--accent-deep);
+  box-shadow: 0 2px 14px var(--accent-glow);
 }
 
 .btn--ghost-ink {
   background: transparent;
-  border: 1px solid var(--color-text-primary);
-  color: var(--color-text-primary);
+  border: 1px solid var(--ink);
+  color: var(--ink);
 }
 
 .btn--ghost-ink:hover:not(:disabled) {
-  background: var(--color-text-primary);
-  color: var(--color-bg);
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .btn--link-ink {
   background: transparent;
   border: none;
-  color: var(--color-text-primary);
+  color: var(--ink);
   padding: 0;
   border-radius: 0;
   font-weight: 500;

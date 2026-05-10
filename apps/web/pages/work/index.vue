@@ -88,7 +88,7 @@ const works = [
   margin-top: 1.25rem;
   font-size: clamp(1.05rem, 1.5vw, 1.25rem);
   line-height: 1.6;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   max-width: 56ch;
 }
 

@@ -88,7 +88,7 @@ const marqueeItems = [
 <style scoped>
 .hero {
   position: relative;
-  background: var(--color-bg);
+  background: var(--paper);
 }
 
 .hero__stage {
@@ -104,7 +104,7 @@ const marqueeItems = [
   pointer-events: none;
   background: radial-gradient(
     520px circle at var(--gx, 50%) var(--gy, 50%),
-    var(--color-accent-soft),
+    var(--accent-wash),
     transparent 65%
   );
   filter: blur(50px);
@@ -134,7 +134,7 @@ const marqueeItems = [
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   margin-bottom: 0;
 }
 
@@ -142,7 +142,7 @@ const marqueeItems = [
   content: '';
   width: 22px;
   height: 1px;
-  background: var(--color-accent);
+  background: var(--accent);
 }
 
 .hero__title {
@@ -151,20 +151,20 @@ const marqueeItems = [
   font-size: clamp(3rem, 8vw, 7rem);
   letter-spacing: -0.04em;
   line-height: 1.02;
-  color: var(--color-text-primary);
+  color: var(--ink);
   max-width: 18ch;
 }
 
 .hero__title-mark {
   font-style: italic;
-  color: var(--color-accent);
+  color: var(--accent);
 }
 
 .hero__subline {
   font-family: var(--font-body);
   font-size: clamp(1.05rem, 1.6vw, 1.3rem);
   line-height: 1.55;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   max-width: 50ch;
 }
 

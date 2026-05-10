@@ -40,14 +40,14 @@
   font-size: clamp(2.5rem, 7vw, 5.5rem);
   letter-spacing: -0.035em;
   line-height: 1.0;
-  color: var(--color-text-primary);
+  color: var(--ink);
   margin: 0;
 }
 
 .closing-cta__lead {
   font-size: clamp(1.05rem, 1.5vw, 1.25rem);
   line-height: 1.55;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   max-width: 48ch;
   margin: 0;
 }

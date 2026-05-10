@@ -74,7 +74,7 @@ defineProps<Props>();
 .work-card__media {
   position: relative;
   aspect-ratio: 16 / 10;
-  background: var(--color-bg-alt);
+  background: var(--paper-deep);
   border-radius: var(--radius-lg);
   overflow: hidden;
   margin-bottom: 1.5rem;
@@ -100,15 +100,15 @@ defineProps<Props>();
   align-items: center;
   justify-content: center;
   background:
-    radial-gradient(ellipse at 30% 20%, var(--color-accent-soft), transparent 60%),
-    linear-gradient(135deg, var(--color-bg-alt), var(--color-bg-card));
+    radial-gradient(ellipse at 30% 20%, var(--accent-wash), transparent 60%),
+    linear-gradient(135deg, var(--paper-deep), var(--paper-soft));
   transition: transform var(--duration-slow) var(--ease-out);
 }
 
 .work-card__placeholder-text {
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 2.5rem);
-  color: var(--color-text-muted);
+  color: var(--ink-faint);
   letter-spacing: -0.03em;
 }
 
@@ -123,14 +123,14 @@ defineProps<Props>();
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
 .work-card__meta-divider {
-  color: var(--color-border-strong);
+  color: var(--ink-faint);
 }
 
 .work-card__title {
@@ -138,13 +138,13 @@ defineProps<Props>();
   font-size: clamp(1.75rem, 3.2vw, 2.5rem);
   line-height: 1.05;
   letter-spacing: -0.025em;
-  color: var(--color-text-primary);
+  color: var(--ink);
 }
 
 .work-card__summary {
   font-size: 1rem;
   line-height: 1.55;
-  color: var(--color-text-secondary);
+  color: var(--ink-mute);
   max-width: 52ch;
 }
 
@@ -158,8 +158,8 @@ defineProps<Props>();
   gap: 0.4rem;
   font-size: 0.95rem;
   font-weight: 500;
-  color: var(--color-text-primary);
-  border-bottom: 1px solid var(--color-text-primary);
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
   padding-bottom: 2px;
 }
 
@@ -181,9 +181,9 @@ defineProps<Props>();
   font-size: 0.68rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-text-primary);
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  color: var(--ink);
+  background: var(--paper-soft);
+  border: 1px solid var(--line);
   border-radius: var(--radius-full);
   padding: 0.35rem 0.7rem;
   text-decoration: none;
@@ -193,7 +193,7 @@ defineProps<Props>();
 }
 
 .work-card__live:hover {
-  background: var(--color-text-primary);
-  color: var(--color-bg);
+  background: var(--ink);
+  color: var(--paper);
 }
 </style>
