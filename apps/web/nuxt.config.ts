@@ -53,6 +53,7 @@ export default defineNuxtConfig({
           "default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://api.fontshare.com; connect-src 'self' https: http:; font-src 'self' data: https://fonts.gstatic.com https://cdn.fontshare.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
       }
     },
+    '/contact': { redirect: { to: '/brief', statusCode: 301 } },
     '/robots.txt': { headers: { 'content-type': 'text/plain; charset=utf-8' } },
     '/sitemap.xml': { headers: { 'content-type': 'application/xml; charset=utf-8' } }
   },
