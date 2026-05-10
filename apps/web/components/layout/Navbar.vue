@@ -131,13 +131,10 @@ onUnmounted(() => {
 
 .navbar__capsule {
   pointer-events: auto;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: inline-flex;
   align-items: center;
-  gap: 1rem;
-  width: 100%;
-  max-width: var(--max-width);
-  padding: 0.4rem 0.45rem 0.4rem 1.2rem;
+  gap: 1.25rem;
+  padding: 0.35rem 0.4rem 0.35rem 1rem;
   background: color-mix(in oklch, var(--paper-soft) 92%, transparent);
   border: 1px solid var(--line);
   border-radius: var(--radius-full);
@@ -165,24 +162,23 @@ onUnmounted(() => {
 
 .navbar__wordmark {
   font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-size: 1.15rem;
   letter-spacing: -0.025em;
   font-weight: 400;
   line-height: 1;
   color: var(--ink);
 }
 
-/* Center nav links */
+/* Nav links */
 .navbar__links {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .navbar__link {
   font-family: var(--font-body);
-  font-size: 0.92rem;
+  font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: -0.005em;
   color: var(--ink-mute);
@@ -190,6 +186,7 @@ onUnmounted(() => {
   transition: color var(--duration-fast) ease;
   position: relative;
   padding: 0.25rem 0;
+  white-space: nowrap;
 }
 
 .navbar__link:hover,
@@ -211,9 +208,9 @@ onUnmounted(() => {
 
 /* Right cluster */
 .navbar__cluster {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 /* Locale toggle — minimal text pair */
@@ -257,12 +254,13 @@ onUnmounted(() => {
   display: inline-flex;
   align-items: center;
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 500;
+  letter-spacing: -0.005em;
   color: var(--paper);
-  background: var(--accent);
+  background: var(--ink);
   text-decoration: none;
-  padding: 0.55rem 1.1rem;
+  padding: 0.5rem 0.95rem;
   border-radius: var(--radius-full);
   transition:
     background var(--duration-fast) ease,
@@ -270,7 +268,7 @@ onUnmounted(() => {
 }
 
 .navbar__cta:hover {
-  background: var(--accent-deep);
+  background: var(--ink-2);
   transform: translateY(-1px);
 }
 
@@ -326,14 +324,13 @@ onUnmounted(() => {
 
 @media (max-width: 768px) {
   .navbar__capsule {
-    grid-template-columns: auto 1fr auto;
-    gap: 1rem;
-    padding: 0.4rem 0.45rem 0.4rem 1.2rem;
+    gap: 0.75rem;
+    padding: 0.35rem 0.4rem 0.35rem 1rem;
   }
 
   .navbar__links {
     position: fixed;
-    top: 4.5rem;
+    top: 4rem;
     left: 1rem;
     right: 1rem;
     flex-direction: column;
