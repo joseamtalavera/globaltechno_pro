@@ -2,19 +2,19 @@
 useSeoMeta({
   title: 'be-working',
   description:
-    'Booking platform for Spanish coworking spaces — built end-to-end. Real-time availability, payments, and member portals.',
+    'A workplace platform for teams that don\'t want a Slack-shaped solution. Site, app shell and onboarding rebuilt around a single editorial idea: less surface, more signal.',
   ogTitle: 'be-working — Globaltechno work'
 });
 
 const stack = [
-  'Nuxt 3',
+  'Next.js',
   'TypeScript',
+  'Tailwind',
   'Node.js',
   'PostgreSQL',
   'Prisma',
   'Stripe',
-  'AWS',
-  'Docker'
+  'Vercel'
 ];
 </script>
 
@@ -23,17 +23,15 @@ const stack = [
     <section class="cs-hero section section--light">
       <div class="cs-hero__inner section__inner section__inner--narrow">
         <SharedScrollReveal>
-          <p class="cs-hero__eyebrow">
-            <NuxtLink to="/work">Work</NuxtLink>
-            <span aria-hidden="true">·</span>
-            <span>2024</span>
-          </p>
-          <h1 class="cs-hero__title text-balance">be-working</h1>
-          <p class="cs-hero__role">Full-stack build · Booking platform for coworking spaces</p>
+          <SharedKicker label="Work · 2025" ordinal="02" />
+          <h1 class="cs-hero__title text-balance">
+            be-working — <em>workspace</em>,<br>reduced.
+          </h1>
+          <p class="cs-hero__role">Product + web · Workplace platform for distributed teams</p>
           <p class="cs-hero__summary">
-            A multi-location booking platform for Spanish coworking operators. Real-time room and desk availability,
-            member subscriptions, automated invoicing, and operator-side scheduling — replacing a chaotic mix of
-            email threads and spreadsheets.
+            A workplace platform for teams that don't want a Slack-shaped solution.
+            We rebuilt the site, app shell and onboarding around a single editorial
+            idea: less surface, more signal.
           </p>
           <a
             href="https://be-working.com"
@@ -51,8 +49,9 @@ const stack = [
       <div class="cs-cover__inner section__inner">
         <SharedScrollReveal direction="scale">
           <div class="cs-cover__media" aria-hidden="true">
+            <span class="cs-cover__glyph">B / W</span>
             <span class="cs-cover__title">be-working</span>
-            <span class="cs-cover__sub">Coworking, booked.</span>
+            <span class="cs-cover__sub">Workspace, reduced.</span>
           </div>
         </SharedScrollReveal>
       </div>
@@ -61,18 +60,20 @@ const stack = [
     <section class="cs-block section section--light">
       <div class="cs-block__inner section__inner section__inner--narrow">
         <SharedScrollReveal>
-          <span class="section-label">Problem</span>
+          <SharedKicker label="Problem" ordinal="01" />
           <h2 class="cs-block__heading text-balance">
-            Bookings managed by email. Mistakes by default.
+            Bookings managed by email. <em>Mistakes by default.</em>
           </h2>
           <p class="cs-block__body">
-            Spanish coworking operators were running multi-location businesses on top of email threads, paper
-            ledgers, and ad-hoc spreadsheets. Members couldn't see real-time availability. Operators spent hours
-            reconciling bookings. Double-bookings were routine. New members were onboarded by hand.
+            Spanish coworking operators were running multi-location businesses on
+            top of email threads, paper ledgers, and ad-hoc spreadsheets. Members
+            couldn't see real-time availability. Operators spent hours reconciling
+            bookings. Double-bookings were routine. New members were onboarded by
+            hand.
           </p>
           <p class="cs-block__body">
-            They needed a single platform that members and operators could trust — one source of truth for who's
-            booked where, what's paid, and what's next.
+            They needed a single platform that members and operators could trust —
+            one source of truth for who's booked where, what's paid, and what's next.
           </p>
         </SharedScrollReveal>
       </div>
@@ -81,27 +82,32 @@ const stack = [
     <section class="cs-block section section--alt">
       <div class="cs-block__inner section__inner section__inner--narrow">
         <SharedScrollReveal>
-          <span class="section-label">Approach</span>
+          <SharedKicker label="Approach" ordinal="02" />
           <h2 class="cs-block__heading text-balance">
-            One platform. Three audiences. Zero spreadsheets.
+            One platform. Three audiences. <em>Zero spreadsheets.</em>
           </h2>
           <p class="cs-block__body">
-            We designed the product as three coordinated surfaces sharing a single backend:
+            We designed the product as three coordinated surfaces sharing a single
+            backend:
           </p>
           <ul class="cs-block__list">
             <li>
-              <strong>Public booking site</strong> — real-time availability, instant reservation, Stripe checkout.
+              <strong>Public booking site</strong> — real-time availability, instant
+              reservation, Stripe checkout.
             </li>
             <li>
-              <strong>Member portal</strong> — subscriptions, booking history, invoices, account self-service.
+              <strong>Member portal</strong> — subscriptions, booking history,
+              invoices, account self-service.
             </li>
             <li>
-              <strong>Operator dashboard</strong> — multi-location scheduling, member management, revenue reports.
+              <strong>Operator dashboard</strong> — multi-location scheduling,
+              member management, revenue reports.
             </li>
           </ul>
           <p class="cs-block__body">
-            Built on Nuxt 3 SSR for performance and SEO, a Node API with Prisma against PostgreSQL, Stripe for
-            payments, role-based access, and deployment on AWS with CI/CD.
+            Built on Next.js for performance and SEO, a Node API with Prisma against
+            PostgreSQL, Stripe for payments, role-based access, and deployment on
+            Vercel with CI/CD.
           </p>
         </SharedScrollReveal>
       </div>
@@ -110,13 +116,14 @@ const stack = [
     <section class="cs-block section section--light">
       <div class="cs-block__inner section__inner section__inner--narrow">
         <SharedScrollReveal>
-          <span class="section-label">Outcome</span>
+          <SharedKicker label="Outcome" ordinal="03" />
           <h2 class="cs-block__heading text-balance">
-            Live across multiple cities. Members book themselves. Operators got their evenings back.
+            Live across multiple cities. <em>Members book themselves.</em>
           </h2>
           <p class="cs-block__body">
-            Since launch, members book directly through the platform without operator intervention. Double-bookings
-            stopped happening. Operators reclaimed time previously lost to manual reconciliation. New locations
+            Since launch, members book directly through the platform without
+            operator intervention. Double-bookings stopped happening. Operators
+            reclaimed time previously lost to manual reconciliation. New locations
             onboard in hours, not weeks.
           </p>
         </SharedScrollReveal>
@@ -126,7 +133,7 @@ const stack = [
     <section class="cs-stack section section--light">
       <div class="cs-stack__inner section__inner section__inner--narrow">
         <SharedScrollReveal>
-          <span class="section-label">Stack</span>
+          <SharedKicker label="Stack" ordinal="04" />
           <ul class="cs-stack__list">
             <li v-for="item in stack" :key="item" class="cs-stack__item">{{ item }}</li>
           </ul>
@@ -149,34 +156,18 @@ const stack = [
   margin: 0 auto;
 }
 
-.cs-hero__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-  margin-bottom: 1.5rem;
-}
-
-.cs-hero__eyebrow a {
-  color: var(--ink-mute);
-  border-bottom: 1px solid transparent;
-  transition: color var(--duration-fast) ease, border-color var(--duration-fast) ease;
-}
-
-.cs-hero__eyebrow a:hover {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
-}
-
 .cs-hero__title {
-  font-size: clamp(3rem, 9vw, 7rem);
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 9vw, 7.5rem);
   letter-spacing: -0.04em;
-  line-height: 1.0;
-  margin: 0 0 1.5rem;
+  line-height: 0.95;
+  margin: 0.6rem 0 1.5rem;
+  color: var(--ink);
+}
+
+.cs-hero__title em {
+  font-style: italic;
+  color: var(--accent);
 }
 
 .cs-hero__role {
@@ -188,9 +179,10 @@ const stack = [
 }
 
 .cs-hero__summary {
-  font-size: clamp(1.15rem, 1.7vw, 1.35rem);
-  line-height: 1.55;
-  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  line-height: 1.45;
+  color: var(--ink-2);
   max-width: 60ch;
   margin-bottom: 2rem;
 }
@@ -213,7 +205,6 @@ const stack = [
   border-bottom-color: var(--accent);
 }
 
-/* Cover */
 .cs-cover {
   padding-top: 2rem;
   padding-bottom: clamp(4rem, 8vw, 7rem);
@@ -223,47 +214,62 @@ const stack = [
   aspect-ratio: 16 / 9;
   border-radius: var(--radius-xl);
   background:
-    radial-gradient(ellipse at 25% 20%, var(--accent-wash), transparent 55%),
-    linear-gradient(135deg, #1A1A2E 0%, #0E0E10 100%);
-  color: var(--paper);
+    radial-gradient(ellipse at 25% 70%, var(--accent-wash), transparent 55%),
+    linear-gradient(135deg, var(--paper-soft), var(--paper-deep));
+  color: var(--ink);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 1rem;
   border: 1px solid var(--line);
   overflow: hidden;
+}
+
+.cs-cover__glyph {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 5vw, 4rem);
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  font-weight: 500;
 }
 
 .cs-cover__title {
   font-family: var(--font-display);
   font-size: clamp(3rem, 8vw, 6rem);
   letter-spacing: -0.04em;
-  color: var(--paper);
+  color: var(--ink);
 }
 
 .cs-cover__sub {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
 }
 
-/* Block sections */
 .cs-block__inner {
   max-width: var(--max-width-narrow);
   margin: 0 auto;
 }
 
 .cs-block__heading {
-  margin: 0.25rem 0 2rem;
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  margin: 0.6rem 0 2rem;
+  font-size: clamp(1.85rem, 4vw, 2.85rem);
   letter-spacing: -0.025em;
-  line-height: 1.1;
+  line-height: 1.05;
+  font-family: var(--font-display);
+  color: var(--ink);
+}
+
+.cs-block__heading em {
+  font-style: italic;
+  color: var(--accent);
 }
 
 .cs-block__body {
+  font-family: var(--font-body);
   font-size: 1.075rem;
   line-height: 1.7;
   color: var(--ink);
@@ -307,7 +313,6 @@ const stack = [
   color: var(--ink);
 }
 
-/* Stack */
 .cs-stack__inner {
   max-width: var(--max-width-narrow);
   margin: 0 auto;
@@ -326,10 +331,18 @@ const stack = [
   font-family: var(--font-mono);
   font-size: 0.78rem;
   letter-spacing: 0.04em;
-  padding: 0.4rem 0.85rem;
+  padding: 0.45rem 0.9rem;
   border: 1px solid var(--line);
   border-radius: var(--radius-full);
   color: var(--ink);
   background: var(--paper-soft);
+  transition:
+    border-color var(--duration-fast) ease,
+    transform var(--duration-fast) ease;
+}
+
+.cs-stack__item:hover {
+  border-color: var(--ink);
+  transform: translateY(-1px);
 }
 </style>
