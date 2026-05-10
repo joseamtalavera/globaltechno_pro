@@ -53,7 +53,7 @@ withDefaults(defineProps<Props>(), {
 
 .service-card--featured {
   border-color: var(--color-accent);
-  background: linear-gradient(135deg, white 0%, rgba(0, 229, 160, 0.02) 100%);
+  background: linear-gradient(135deg, white 0%, rgba(214, 80, 46, 0.02) 100%);
 }
 
 .service-card--featured:hover {

@@ -38,7 +38,7 @@ const nodes = Array.from({ length: nodeCount }, (_, i) => ({
                 y1="0"
                 :x2="Math.cos((node.angle - 90) * Math.PI / 180) * 180"
                 :y2="Math.sin((node.angle - 90) * Math.PI / 180) * 180"
-                stroke="rgba(0, 229, 160, 0.2)"
+                stroke="rgba(214, 80, 46, 0.2)"
                 stroke-width="1"
                 stroke-dasharray="3 3"
               />
@@ -136,7 +136,7 @@ const nodes = Array.from({ length: nodeCount }, (_, i) => ({
   width: 360px;
   height: 360px;
   border-radius: 50%;
-  border: 1px dashed rgba(0, 229, 160, 0.2);
+  border: 1px dashed rgba(214, 80, 46, 0.2);
 }
 
 .orch-rotator {
@@ -160,11 +160,11 @@ const nodes = Array.from({ length: nodeCount }, (_, i) => ({
   height: 64px;
   border-radius: 16px;
   background: rgba(10, 10, 11, 0.8);
-  border: 1.5px solid rgba(0, 229, 160, 0.35);
+  border: 1.5px solid rgba(214, 80, 46, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 20px rgba(0, 229, 160, 0.12);
+  box-shadow: 0 4px 20px rgba(214, 80, 46, 0.12);
 }
 
 .orch-node__dot {
@@ -187,7 +187,7 @@ const nodes = Array.from({ length: nodeCount }, (_, i) => ({
   position: absolute;
   inset: -20px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 229, 160, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(214, 80, 46, 0.2) 0%, transparent 70%);
   animation: coreGlow 3s ease-in-out infinite;
 }
 
@@ -200,7 +200,7 @@ const nodes = Array.from({ length: nodeCount }, (_, i) => ({
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 40px rgba(0, 229, 160, 0.4);
+  box-shadow: 0 0 40px rgba(214, 80, 46, 0.4);
 }
 
 .orch-center__label {

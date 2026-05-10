@@ -151,12 +151,12 @@ const outerNodes = Array.from({ length: 8 }, (_, i) => i);
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  border: 1px dashed rgba(0, 229, 160, 0.15);
+  border: 1px dashed rgba(214, 80, 46, 0.15);
 }
 
 .orbit-ring--inner { width: 280px; height: 280px; }
 .orbit-ring--middle { width: 480px; height: 480px; }
-.orbit-ring--outer { width: 600px; height: 600px; border-color: rgba(0, 229, 160, 0.08); }
+.orbit-ring--outer { width: 600px; height: 600px; border-color: rgba(214, 80, 46, 0.08); }
 
 .orbit-core {
   position: absolute;
@@ -166,8 +166,8 @@ const outerNodes = Array.from({ length: 8 }, (_, i) => i);
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: rgba(0, 229, 160, 0.08);
-  border: 1.5px solid rgba(0, 229, 160, 0.4);
+  background: rgba(214, 80, 46, 0.08);
+  border: 1.5px solid rgba(214, 80, 46, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -179,7 +179,7 @@ const outerNodes = Array.from({ length: 8 }, (_, i) => i);
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: radial-gradient(circle, var(--color-accent) 0%, rgba(0, 229, 160, 0.4) 60%, transparent 100%);
+  background: radial-gradient(circle, var(--color-accent) 0%, rgba(214, 80, 46, 0.4) 60%, transparent 100%);
 }
 
 .orbit-rotator {
@@ -218,7 +218,7 @@ const outerNodes = Array.from({ length: 8 }, (_, i) => i);
   height: 14px;
   border-radius: 50%;
   background: var(--color-accent);
-  box-shadow: 0 0 12px rgba(0, 229, 160, 0.4);
+  box-shadow: 0 0 12px rgba(214, 80, 46, 0.4);
 }
 
 .orbit-node__dot--lg {
@@ -226,7 +226,7 @@ const outerNodes = Array.from({ length: 8 }, (_, i) => i);
   height: 22px;
   background: rgba(10, 10, 11, 1);
   border: 2px solid var(--color-accent);
-  box-shadow: 0 0 16px rgba(0, 229, 160, 0.3);
+  box-shadow: 0 0 16px rgba(214, 80, 46, 0.3);
 }
 
 @media (max-width: 900px) {

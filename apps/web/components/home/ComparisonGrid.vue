@@ -88,8 +88,8 @@ defineProps<{
 }
 
 .comparison-col--new {
-  border-color: rgba(0, 229, 160, 0.25);
-  background: rgba(0, 229, 160, 0.03);
+  border-color: rgba(214, 80, 46, 0.25);
+  background: rgba(214, 80, 46, 0.03);
 }
 
 .comparison-col__title {

@@ -103,7 +103,7 @@ defineProps<{
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(0, 229, 160, 0.1);
+  background: rgba(214, 80, 46, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
