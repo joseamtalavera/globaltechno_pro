@@ -4,8 +4,8 @@ const mobileOpen = ref(false);
 const route = useRoute();
 
 const navLinks = [
-  { label: 'Services', to: '/services' },
-  { label: 'Case Studies', to: '/case-studies' },
+  { label: 'Solutions', to: '/solutions' },
+  { label: 'Work', to: '/work' },
   { label: 'About', to: '/about' }
 ];
 
@@ -49,8 +49,8 @@ onUnmounted(() => {
       </div>
 
       <div class="navbar__actions">
-        <UiButton variant="filled" size="sm" to="/contact">
-          Get in Touch
+        <UiButton variant="filled" size="sm" to="/brief">
+          Start a project
         </UiButton>
 
         <button
@@ -84,9 +84,9 @@ onUnmounted(() => {
 }
 
 .navbar--scrolled {
-  background: rgba(10, 10, 11, 0.85);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--color-border-dark);
+  background: rgba(251, 250, 247, 0.82);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .navbar__skip {
@@ -96,7 +96,7 @@ onUnmounted(() => {
   z-index: 200;
   padding: 0.5rem 1rem;
   background: var(--color-accent);
-  color: var(--color-bg-dark);
+  color: var(--color-bg);
   border-radius: var(--radius-sm);
   font-weight: 500;
 }
@@ -119,26 +119,25 @@ onUnmounted(() => {
   align-items: center;
   gap: 0.6rem;
   text-decoration: none;
-  color: var(--color-text-on-dark);
+  color: var(--color-text-primary);
 }
 
 .navbar__logo {
   height: 32px;
   width: auto;
   display: block;
-  filter: invert(1);
 }
 
 .navbar__links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2.25rem;
 }
 
 .navbar__link {
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--color-text-muted-on-dark);
+  color: var(--color-text-secondary);
   text-decoration: none;
   transition: color var(--duration-fast) ease;
   position: relative;
@@ -146,18 +145,17 @@ onUnmounted(() => {
 
 .navbar__link:hover,
 .navbar__link--active {
-  color: var(--color-text-on-dark);
+  color: var(--color-text-primary);
 }
 
 .navbar__link--active::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: -6px;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 1px;
   background: var(--color-accent);
-  border-radius: 1px;
 }
 
 .navbar__actions {
@@ -182,8 +180,8 @@ onUnmounted(() => {
 .navbar__hamburger-line {
   display: block;
   width: 100%;
-  height: 2px;
-  background: var(--color-text-on-dark);
+  height: 1.5px;
+  background: var(--color-text-primary);
   border-radius: 1px;
   transition:
     transform var(--duration-normal) var(--ease-out),
@@ -202,7 +200,6 @@ onUnmounted(() => {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   .navbar__links {
     position: fixed;
@@ -210,8 +207,7 @@ onUnmounted(() => {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(10, 10, 11, 0.97);
-    backdrop-filter: blur(20px);
+    background: var(--color-bg);
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -228,7 +224,7 @@ onUnmounted(() => {
 
   .navbar__link {
     font-size: 1.5rem;
-    color: var(--color-text-on-dark);
+    color: var(--color-text-primary);
   }
 
   .navbar__hamburger {
