@@ -70,7 +70,7 @@ export default defineNuxtConfig({
     '/**': {
       headers: {
         'content-security-policy':
-          "default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://api.fontshare.com; connect-src 'self' https: http:; font-src 'self' data: https://fonts.gstatic.com https://cdn.fontshare.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
+          "default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https: http:; font-src 'self' data: https://fonts.gstatic.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'"
       }
     },
     '/contact': { redirect: { to: '/brief', statusCode: 301 } },

@@ -1,10 +1,8 @@
 /* ==========================================================================
-   Globaltechno — Font Stack (editorial)
-   - Display: Instrument Serif (Google Fonts)
-   - Body:    Geist (Fontshare)
-   - Mono:    JetBrains Mono (Google Fonts)
+   Globaltechno — Font Stack (v2 editorial)
+   - Display: Newsreader (italic optical sizing)
+   - Body:    Inter Tight
+   - Mono:    JetBrains Mono
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
-@import url('https://api.fontshare.com/v2/css?f[]=geist@300,400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap');
