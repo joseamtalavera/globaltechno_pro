@@ -1,30 +1,16 @@
 <script setup lang="ts">
 const currentYear = new Date().getFullYear();
 
-const navGroups = [
-  {
-    title: 'Services',
-    links: [
-      { label: 'AI Agents', to: '/services/ai-agents' },
-      { label: 'Cybersecurity', to: '/services/cybersecurity' },
-      { label: 'Digital Identity', to: '/services/digital-identity' },
-      { label: 'Cloud Computing', to: '/services/cloud-computing' },
-      { label: 'Selective Engineering', to: '/services/selective-engineering' }
-    ]
-  },
-  {
-    title: 'Company',
-    links: [
-      { label: 'About', to: '/about' },
-      { label: 'Case Studies', to: '/case-studies' },
-      { label: 'Contact', to: '/contact' }
-    ]
-  }
+const siteLinks = [
+  { label: 'Solutions', to: '/solutions' },
+  { label: 'Work', to: '/work' },
+  { label: 'About', to: '/about' },
+  { label: 'Brief', to: '/brief' }
 ];
 </script>
 
 <template>
-  <footer class="footer section--dark grain-overlay">
+  <footer class="footer section section--alt">
     <div class="footer__inner section__inner">
       <div class="footer__top">
         <div class="footer__brand">
@@ -32,17 +18,28 @@ const navGroups = [
             <img src="/logo.png" alt="Globaltechno" class="footer__logo" />
           </NuxtLink>
           <p class="footer__tagline">
-            Intelligent automation, cybersecurity, and cloud-native engineering for enterprises ready to evolve.
+            Companies bring problems. We build the solution.
           </p>
         </div>
 
         <div class="footer__nav-groups">
-          <div v-for="group in navGroups" :key="group.title" class="footer__nav-group">
-            <h4 class="footer__nav-title">{{ group.title }}</h4>
+          <div class="footer__nav-group">
+            <h4 class="footer__nav-title">Site</h4>
             <ul class="footer__nav-list">
-              <li v-for="link in group.links" :key="link.to">
+              <li v-for="link in siteLinks" :key="link.to">
                 <NuxtLink :to="link.to" class="footer__nav-link">{{ link.label }}</NuxtLink>
               </li>
+            </ul>
+          </div>
+
+          <div class="footer__nav-group">
+            <h4 class="footer__nav-title">Company</h4>
+            <ul class="footer__nav-list">
+              <li>
+                <a href="mailto:hello@globaltechno.eu" class="footer__nav-link">hello@globaltechno.eu</a>
+              </li>
+              <li class="footer__nav-static">Tallinn, Estonia</li>
+              <li class="footer__nav-static">Globaltechno OÜ</li>
             </ul>
           </div>
         </div>
@@ -50,7 +47,7 @@ const navGroups = [
 
       <div class="footer__bottom">
         <p class="footer__copyright">&copy; {{ currentYear }} Globaltechno O&Uuml;. All rights reserved.</p>
-        <p class="footer__location">Tallinn, Estonia</p>
+        <p class="footer__location">Built in Tallinn.</p>
       </div>
     </div>
   </footer>
@@ -58,8 +55,8 @@ const navGroups = [
 
 <style scoped>
 .footer {
-  padding: var(--section-padding-y) var(--section-padding-x) 2rem;
-  border-top: 1px solid var(--color-border-dark);
+  padding: var(--section-padding-y) var(--section-padding-x) 2.5rem;
+  border-top: 1px solid var(--color-border);
 }
 
 .footer__inner {
@@ -72,7 +69,7 @@ const navGroups = [
   grid-template-columns: 1.5fr 2fr;
   gap: 4rem;
   padding-bottom: 3rem;
-  border-bottom: 1px solid var(--color-border-dark);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .footer__brand {
@@ -86,21 +83,22 @@ const navGroups = [
   align-items: center;
   gap: 0.6rem;
   text-decoration: none;
-  color: var(--color-text-on-dark);
+  color: var(--color-text-primary);
 }
 
 .footer__logo {
   height: 28px;
   width: auto;
   display: block;
-  filter: invert(1);
 }
 
 .footer__tagline {
-  font-size: 0.9rem;
-  color: var(--color-text-muted-on-dark);
-  max-width: 320px;
-  line-height: 1.6;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+  max-width: 360px;
+  letter-spacing: -0.015em;
 }
 
 .footer__nav-groups {
@@ -109,13 +107,13 @@ const navGroups = [
 }
 
 .footer__nav-title {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-text-on-dark);
-  margin-bottom: 1rem;
+  letter-spacing: 0.16em;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.25rem;
 }
 
 .footer__nav-list {
@@ -124,18 +122,23 @@ const navGroups = [
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.7rem;
 }
 
 .footer__nav-link {
-  font-size: 0.875rem;
-  color: var(--color-text-muted-on-dark);
+  font-size: 0.925rem;
+  color: var(--color-text-primary);
   text-decoration: none;
   transition: color var(--duration-fast) ease;
 }
 
 .footer__nav-link:hover {
-  color: var(--color-text-on-dark);
+  color: var(--color-accent);
+}
+
+.footer__nav-static {
+  font-size: 0.925rem;
+  color: var(--color-text-secondary);
 }
 
 .footer__bottom {
@@ -148,7 +151,9 @@ const navGroups = [
 .footer__copyright,
 .footer__location {
   font-size: 0.8rem;
-  color: var(--color-text-muted-on-dark);
+  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
 }
 
 @media (max-width: 768px) {
@@ -158,7 +163,7 @@ const navGroups = [
   }
 
   .footer__nav-groups {
-    gap: 2rem;
+    gap: 2.5rem;
   }
 
   .footer__bottom {
