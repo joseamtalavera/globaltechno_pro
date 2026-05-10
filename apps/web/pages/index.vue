@@ -1,22 +1,22 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'AI Agents & Intelligent Automation',
+  title: 'Globaltechno — We build solutions',
   description:
-    'Globaltechno builds AI agents and intelligent automation for enterprises. Cybersecurity, digital identity, and cloud-native engineering.',
-  ogTitle: 'Globaltechno | We Build AI Agents That Work',
+    'Companies bring problems. We build the solution. Full-stack apps, testing, and software architecture today. Web3, cybersecurity, and agentic systems next.',
+  ogTitle: 'Globaltechno — We build solutions',
   ogDescription:
-    'Intelligent automation, cybersecurity, and cloud-native engineering for enterprises ready to evolve.',
+    'Full-stack apps, testing, and software architecture today. Web3, cybersecurity, and agentic systems coming next.',
   ogType: 'website'
 });
 </script>
 
 <template>
   <div>
-    <HomeHeroSection />
-    <HomeServicesGrid />
-    <HomeWhyUsSection />
-    <HomeCaseStudyPreview />
-    <HomeTechStackVisual />
-    <HomeCTASection />
+    <HomeEditorialHero />
+    <HomeSolutionsGridSection />
+    <HomeProcessTimelineSection />
+    <HomeSelectedWorkSection />
+    <HomeWhatsDifferentSection />
+    <HomeClosingCtaSection />
   </div>
 </template>
