@@ -96,6 +96,13 @@ function attachTilt(el: ElWithCleanup): void {
 }
 
 const magneticDirective: ObjectDirective<ElWithCleanup, DirectiveValue> = {
+  // No-op on the server. Without this, Vue's ssrGetDirectiveProps
+  // crashes when it tries to call getSSRProps on an unregistered
+  // directive — which kills SSR for any page that mounts a
+  // <UiButton magnetic>, e.g. the navbar.
+  getSSRProps() {
+    return {};
+  },
   mounted(el, binding) {
     if (binding.value === false) return;
     if (!supportsHover()) return;
@@ -118,6 +125,9 @@ const magneticDirective: ObjectDirective<ElWithCleanup, DirectiveValue> = {
 };
 
 const tiltDirective: ObjectDirective<ElWithCleanup, DirectiveValue> = {
+  getSSRProps() {
+    return {};
+  },
   mounted(el, binding) {
     if (binding.value === false) return;
     if (!supportsHover()) return;

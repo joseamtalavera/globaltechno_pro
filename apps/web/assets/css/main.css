@@ -24,23 +24,6 @@
   --accent-deep: oklch(54% 0.18 38);
   --accent-wash: color-mix(in oklch, var(--accent) 10%, var(--paper));
   --accent-glow: color-mix(in oklch, var(--accent) 30%, transparent);
-}
-
-/* Accent palettes — cycled via useTheme().cycleAccent(); persisted in
-   localStorage as gt:tweak.accent (0–3). The default :root already
-   matches accent=0. */
-[data-accent='1'] { --accent: oklch(58% 0.10 150); --accent-deep: oklch(50% 0.10 150); }
-[data-accent='2'] { --accent: oklch(54% 0.15 250); --accent-deep: oklch(46% 0.15 250); }
-[data-accent='3'] { --accent: oklch(50% 0.16 320); --accent-deep: oklch(42% 0.16 320); }
-
-/* Re-evaluate the wash/glow when accent changes (color-mix re-derives
-   automatically since it references --accent). Re-stated here so the
-   linter / IDE can resolve it cleanly when accent overrides cascade. */
-[data-accent='1'],
-[data-accent='2'],
-[data-accent='3'] {
-  --accent-wash: color-mix(in oklch, var(--accent) 10%, var(--paper));
-  --accent-glow: color-mix(in oklch, var(--accent) 30%, transparent);
 
   /* Status */
   --success: oklch(52% 0.13 145);
@@ -74,6 +57,15 @@
   --duration-normal: 320ms;
   --duration-slow: 700ms;
 }
+
+/* Accent palettes — cycled via useTheme().cycleAccent(); persisted in
+   localStorage as gt:tweak.accent (0–3). The default :root already
+   matches accent=0 (clay). --accent-wash and --accent-glow auto-derive
+   via color-mix(var(--accent) ...) so we only override the two seed
+   accent values per palette. */
+[data-accent='1'] { --accent: oklch(58% 0.10 150); --accent-deep: oklch(50% 0.10 150); }
+[data-accent='2'] { --accent: oklch(54% 0.15 250); --accent-deep: oklch(46% 0.15 250); }
+[data-accent='3'] { --accent: oklch(50% 0.16 320); --accent-deep: oklch(42% 0.16 320); }
 
 /* Dark mode (data-theme switch). Mirrors pivot_global reference; the
    accent stays consistent so brand colour reads the same in both modes. */
