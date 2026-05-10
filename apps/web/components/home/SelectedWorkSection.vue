@@ -1,13 +1,13 @@
 <script setup lang="ts">
 const works = [
   {
-    title: 'Coderight',
+    title: 'Codewright',
     year: '01 / 2024',
     role: 'Design + build',
     summary:
       'A QA platform built around how teams really write tests: less ceremony, faster feedback, real signal in CI. Spec to production in nine weeks; now run as a live service.',
-    to: '/work/coderight',
-    liveUrl: 'https://coderight.co',
+    to: '/work/codewright',
+    liveUrl: 'https://codewright.co',
     status: 'Live'
   },
   {
