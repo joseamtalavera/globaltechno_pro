@@ -1,7 +1,13 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted, watch } from 'vue';
+
+const route = useRoute();
 const scrolled = ref(false);
 const mobileOpen = ref(false);
-const route = useRoute();
+
+// Visual-only locale toggle until i18n ships in #41–#43.
+// Persists the user's pick across pages so it doesn't snap back.
+const locale = ref<'en' | 'es'>('en');
 
 const navLinks = [
   { label: 'Solutions', to: '/solutions' },
@@ -9,8 +15,19 @@ const navLinks = [
   { label: 'About', to: '/about' }
 ];
 
-function onScroll() {
+function onScroll(): void {
   scrolled.value = window.scrollY > 40;
+}
+
+function toggleLocale(target: 'en' | 'es'): void {
+  locale.value = target;
+  if (typeof localStorage !== 'undefined') {
+    try {
+      localStorage.setItem('gt:locale', target);
+    } catch {
+      // ignore
+    }
+  }
 }
 
 watch(() => route.path, () => {
@@ -18,6 +35,12 @@ watch(() => route.path, () => {
 });
 
 onMounted(() => {
+  if (typeof localStorage !== 'undefined') {
+    const saved = localStorage.getItem('gt:locale');
+    if (saved === 'en' || saved === 'es') {
+      locale.value = saved;
+    }
+  }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 });
@@ -28,12 +51,15 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <header class="navbar" :class="{ 'navbar--scrolled': scrolled, 'navbar--open': mobileOpen }">
-    <a href="#content" class="sr-only navbar__skip">Skip to content</a>
+  <header
+    class="navbar"
+    :class="{ 'navbar--scrolled': scrolled, 'navbar--open': mobileOpen }"
+  >
+    <a href="#content" class="sr-only">Skip to content</a>
 
-    <nav class="navbar__inner" aria-label="Main navigation">
+    <nav class="navbar__capsule" aria-label="Main navigation">
       <NuxtLink to="/" class="navbar__brand" aria-label="Globaltechno home">
-        <span class="navbar__wordmark">Globaltechno</span>
+        <span class="navbar__wordmark">Globaltechno<span class="navbar__dot" aria-hidden="true">.</span></span>
       </NuxtLink>
 
       <div class="navbar__links" :class="{ 'navbar__links--open': mobileOpen }">
@@ -48,10 +74,35 @@ onUnmounted(() => {
         </NuxtLink>
       </div>
 
-      <div class="navbar__actions">
-        <a href="mailto:hello@globaltechno.eu" class="navbar__contact">hello@globaltechno.eu</a>
+      <div class="navbar__cluster">
+        <div class="navbar__locale" role="group" aria-label="Language">
+          <button
+            type="button"
+            class="navbar__locale-btn"
+            :class="{ 'is-on': locale === 'en' }"
+            :aria-pressed="locale === 'en'"
+            @click="toggleLocale('en')"
+          >
+            EN
+          </button>
+          <button
+            type="button"
+            class="navbar__locale-btn"
+            :class="{ 'is-on': locale === 'es' }"
+            :aria-pressed="locale === 'es'"
+            @click="toggleLocale('es')"
+          >
+            ES
+          </button>
+        </div>
+
+        <a href="mailto:hello@globaltechno.eu" class="navbar__contact">
+          <span class="navbar__contact-icon" aria-hidden="true">✉</span>
+          <span class="navbar__contact-label">hello@globaltechno.eu</span>
+        </a>
+
         <NuxtLink to="/brief" class="navbar__cta">
-          Start a project <span class="navbar__cta-arrow" aria-hidden="true">→</span>
+          Start a project
         </NuxtLink>
 
         <button
@@ -61,9 +112,9 @@ onUnmounted(() => {
           aria-label="Toggle menu"
           @click="mobileOpen = !mobileOpen"
         >
-          <span class="navbar__hamburger-line"></span>
-          <span class="navbar__hamburger-line"></span>
-          <span class="navbar__hamburger-line"></span>
+          <span class="navbar__hamburger-line" />
+          <span class="navbar__hamburger-line" />
+          <span class="navbar__hamburger-line" />
         </button>
       </div>
     </nav>
@@ -73,48 +124,42 @@ onUnmounted(() => {
 <style scoped>
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding: 0 var(--section-padding-x);
-  transition:
-    background-color var(--duration-normal) ease,
-    backdrop-filter var(--duration-normal) ease,
-    border-color var(--duration-normal) ease;
-}
-
-.navbar--scrolled {
-  background: color-mix(in oklch, var(--paper) 85%, transparent);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line);
-}
-
-.navbar__skip {
-  position: absolute;
+  top: 1rem;
   left: 1rem;
-  top: -100%;
-  z-index: 200;
-  padding: 0.5rem 1rem;
-  background: var(--accent);
-  color: var(--paper);
-  border-radius: var(--radius-sm);
-  font-weight: 500;
-}
-
-.navbar__skip:focus {
-  top: 0.5rem;
-}
-
-.navbar__inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
+  right: 1rem;
+  z-index: 100;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 72px;
+  justify-content: center;
+  pointer-events: none;
 }
 
+.navbar__capsule {
+  pointer-events: auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: var(--max-width);
+  padding: 0.5rem 0.55rem 0.5rem 1.6rem;
+  background: color-mix(in oklch, var(--paper-soft) 92%, transparent);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 6px 24px rgba(20, 17, 13, 0.06);
+  transition:
+    box-shadow var(--duration-normal) var(--ease),
+    background var(--duration-normal) var(--ease),
+    border-color var(--duration-normal) var(--ease);
+}
+
+.navbar--scrolled .navbar__capsule {
+  background: color-mix(in oklch, var(--paper-soft) 96%, transparent);
+  box-shadow: 0 10px 30px rgba(20, 17, 13, 0.10);
+}
+
+/* Brand */
 .navbar__brand {
   display: inline-flex;
   align-items: center;
@@ -124,26 +169,36 @@ onUnmounted(() => {
 
 .navbar__wordmark {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   letter-spacing: -0.025em;
   font-weight: 400;
   line-height: 1;
   color: var(--ink);
+  position: relative;
 }
 
+.navbar__dot {
+  color: var(--accent);
+}
+
+/* Center nav links */
 .navbar__links {
   display: flex;
   align-items: center;
-  gap: 2.25rem;
+  justify-content: center;
+  gap: 2rem;
 }
 
 .navbar__link {
-  font-size: 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
   font-weight: 500;
+  letter-spacing: -0.005em;
   color: var(--ink-mute);
   text-decoration: none;
   transition: color var(--duration-fast) ease;
   position: relative;
+  padding: 0.25rem 0;
 }
 
 .navbar__link:hover,
@@ -154,79 +209,127 @@ onUnmounted(() => {
 .navbar__link--active::after {
   content: '';
   position: absolute;
-  bottom: -6px;
-  left: 0;
-  right: 0;
-  height: 1px;
+  left: 50%;
+  bottom: -4px;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
   background: var(--accent);
 }
 
-.navbar__actions {
+/* Right cluster */
+.navbar__cluster {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 0.5rem;
 }
 
-.navbar__contact {
+/* Locale segmented pill */
+.navbar__locale {
+  display: inline-flex;
+  align-items: center;
+  background: var(--paper-deep);
+  border-radius: var(--radius-full);
+  padding: 3px;
+  border: 1px solid var(--line);
+}
+
+.navbar__locale-btn {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border: none;
+  background: transparent;
   color: var(--ink-mute);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) ease,
+    color var(--duration-fast) ease;
+}
+
+.navbar__locale-btn:hover {
+  color: var(--ink);
+}
+
+.navbar__locale-btn.is-on {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* Contact pill */
+.navbar__contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--ink);
   text-decoration: none;
-  transition: color var(--duration-fast) ease;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-full);
+  background: var(--paper-soft);
+  transition:
+    border-color var(--duration-fast) ease,
+    color var(--duration-fast) ease;
 }
 
 .navbar__contact:hover {
+  border-color: var(--ink-faint);
   color: var(--ink);
 }
 
+.navbar__contact-icon {
+  display: inline-block;
+  color: var(--ink-mute);
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+/* CTA filled pill */
 .navbar__cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
   font-family: var(--font-body);
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--paper);
+  background: var(--accent);
   text-decoration: none;
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 2px;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-full);
   transition:
-    color var(--duration-fast) ease,
-    border-color var(--duration-fast) ease;
+    background var(--duration-fast) ease,
+    transform var(--duration-fast) ease;
 }
 
 .navbar__cta:hover {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
+  background: var(--accent-deep);
+  transform: translateY(-1px);
 }
 
-.navbar__cta:hover .navbar__cta-arrow {
-  transform: translate(2px, -2px);
-}
-
-.navbar__cta-arrow {
-  display: inline-block;
-  transition: transform 240ms var(--ease);
-}
-
-@media (max-width: 900px) {
-  .navbar__contact {
-    display: none;
-  }
-}
-
+/* Hamburger */
 .navbar__hamburger {
   display: none;
   flex-direction: column;
   justify-content: center;
-  gap: 5px;
+  gap: 4px;
   width: 36px;
   height: 36px;
-  background: none;
-  border: none;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-full);
   cursor: pointer;
-  padding: 6px;
+  padding: 8px;
+  transition: border-color var(--duration-fast) ease;
+}
+
+.navbar__hamburger:hover {
+  border-color: var(--ink);
 }
 
 .navbar__hamburger-line {
@@ -236,12 +339,12 @@ onUnmounted(() => {
   background: var(--ink);
   border-radius: 1px;
   transition:
-    transform var(--duration-normal) var(--ease-out),
+    transform var(--duration-normal) var(--ease),
     opacity var(--duration-fast) ease;
 }
 
 .navbar--open .navbar__hamburger-line:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+  transform: translateY(5px) rotate(45deg);
 }
 
 .navbar--open .navbar__hamburger-line:nth-child(2) {
@@ -249,24 +352,50 @@ onUnmounted(() => {
 }
 
 .navbar--open .navbar__hamburger-line:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .navbar__contact-label {
+    display: none;
+  }
+
+  .navbar__contact {
+    padding: 0.5rem 0.6rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar__locale {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
+  .navbar__capsule {
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    padding: 0.4rem 0.45rem 0.4rem 1.2rem;
+  }
+
   .navbar__links {
     position: fixed;
-    top: 72px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--paper);
+    top: 4.5rem;
+    left: 1rem;
+    right: 1rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2.5rem;
+    gap: 1.5rem;
+    padding: 2.5rem 1.5rem;
+    background: var(--paper-soft);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 12px 40px rgba(20, 17, 13, 0.10);
     opacity: 0;
     pointer-events: none;
-    transition: opacity var(--duration-normal) ease;
+    transition: opacity var(--duration-normal) var(--ease);
   }
 
   .navbar__links--open {
@@ -275,17 +404,17 @@ onUnmounted(() => {
   }
 
   .navbar__link {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: var(--ink);
+  }
+
+  .navbar__contact,
+  .navbar__cta {
+    display: none;
   }
 
   .navbar__hamburger {
     display: flex;
-  }
-
-  .navbar__actions .btn,
-  .navbar__cta {
-    display: none;
   }
 }
 </style>
