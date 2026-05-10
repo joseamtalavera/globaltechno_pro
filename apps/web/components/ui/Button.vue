@@ -7,6 +7,7 @@ interface Props {
   type?: 'button' | 'submit';
   disabled?: boolean;
   loading?: boolean;
+  magnetic?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -14,7 +15,8 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'md',
   type: 'button',
   disabled: false,
-  loading: false
+  loading: false,
+  magnetic: false
 });
 
 const isLink = computed(() => props.to || props.href);
@@ -28,6 +30,7 @@ const tag = computed(() => {
 <template>
   <component
     :is="tag"
+    v-magnetic="magnetic"
     :to="to"
     :href="href"
     :type="!isLink ? type : undefined"
