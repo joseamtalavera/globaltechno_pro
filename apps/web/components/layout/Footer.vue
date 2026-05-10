@@ -2,7 +2,7 @@
 const currentYear = new Date().getFullYear();
 
 const siteLinks = [
-  { label: 'Solutions', to: '/solutions' },
+  { label: 'Approach', to: '/approach' },
   { label: 'Work', to: '/work' },
   { label: 'About', to: '/about' },
   { label: 'Brief', to: '/brief' }

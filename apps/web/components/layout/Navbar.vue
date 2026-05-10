@@ -10,7 +10,7 @@ const mobileOpen = ref(false);
 const locale = ref<'en' | 'es'>('en');
 
 const navLinks = [
-  { label: 'Solutions', to: '/solutions' },
+  { label: 'Approach', to: '/approach' },
   { label: 'Work', to: '/work' },
   { label: 'About', to: '/about' }
 ];
