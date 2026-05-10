@@ -33,7 +33,7 @@ onUnmounted(() => {
 
     <nav class="navbar__inner" aria-label="Main navigation">
       <NuxtLink to="/" class="navbar__brand" aria-label="Globaltechno home">
-        <img src="/logo.png" alt="Globaltechno" class="navbar__logo" />
+        <span class="navbar__wordmark">Globaltechno</span>
       </NuxtLink>
 
       <div class="navbar__links" :class="{ 'navbar__links--open': mobileOpen }">
@@ -49,9 +49,10 @@ onUnmounted(() => {
       </div>
 
       <div class="navbar__actions">
-        <UiButton variant="filled-ink" size="sm" to="/brief">
-          Start a project
-        </UiButton>
+        <a href="mailto:hello@globaltechno.eu" class="navbar__contact">hello@globaltechno.eu</a>
+        <NuxtLink to="/brief" class="navbar__cta">
+          Start a project <span class="navbar__cta-arrow" aria-hidden="true">→</span>
+        </NuxtLink>
 
         <button
           class="navbar__hamburger"
@@ -84,7 +85,7 @@ onUnmounted(() => {
 }
 
 .navbar--scrolled {
-  background: rgba(251, 250, 247, 0.82);
+  background: color-mix(in oklch, var(--paper) 85%, transparent);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
 }
@@ -115,17 +116,19 @@ onUnmounted(() => {
 }
 
 .navbar__brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
   text-decoration: none;
   color: var(--ink);
 }
 
-.navbar__logo {
-  height: 32px;
-  width: auto;
-  display: block;
+.navbar__wordmark {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--ink);
 }
 
 .navbar__links {
@@ -161,7 +164,56 @@ onUnmounted(() => {
 .navbar__actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.75rem;
+}
+
+.navbar__contact {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-mute);
+  text-decoration: none;
+  transition: color var(--duration-fast) ease;
+}
+
+.navbar__contact:hover {
+  color: var(--ink);
+}
+
+.navbar__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+  transition:
+    color var(--duration-fast) ease,
+    border-color var(--duration-fast) ease;
+}
+
+.navbar__cta:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.navbar__cta:hover .navbar__cta-arrow {
+  transform: translate(2px, -2px);
+}
+
+.navbar__cta-arrow {
+  display: inline-block;
+  transition: transform 240ms var(--ease);
+}
+
+@media (max-width: 900px) {
+  .navbar__contact {
+    display: none;
+  }
 }
 
 .navbar__hamburger {
@@ -231,7 +283,8 @@ onUnmounted(() => {
     display: flex;
   }
 
-  .navbar__actions .btn {
+  .navbar__actions .btn,
+  .navbar__cta {
     display: none;
   }
 }

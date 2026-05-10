@@ -15,7 +15,7 @@ const siteLinks = [
       <div class="footer__top">
         <div class="footer__brand">
           <NuxtLink to="/" class="footer__logo-link" aria-label="Globaltechno home">
-            <img src="/logo.png" alt="Globaltechno" class="footer__logo" />
+            <span class="footer__wordmark">Globaltechno</span>
           </NuxtLink>
           <p class="footer__tagline">
             Companies bring problems. We build the solution.
@@ -79,17 +79,19 @@ const siteLinks = [
 }
 
 .footer__logo-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
   text-decoration: none;
   color: var(--ink);
 }
 
-.footer__logo {
-  height: 28px;
-  width: auto;
-  display: block;
+.footer__wordmark {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--ink);
 }
 
 .footer__tagline {
