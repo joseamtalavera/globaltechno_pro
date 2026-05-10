@@ -1,6 +1,24 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Transform } from 'class-transformer';
-import { Equals, IsBoolean, IsEmail, IsOptional, IsString, Length } from 'class-validator';
+import {
+  Equals,
+  IsBoolean,
+  IsEmail,
+  IsIn,
+  IsOptional,
+  IsString,
+  Length
+} from 'class-validator';
+
+export const SERVICE_INTERESTS = [
+  'full-stack',
+  'testing',
+  'architecture',
+  'not-sure',
+  'other'
+] as const;
+
+export type ServiceInterest = (typeof SERVICE_INTERESTS)[number];
 
 const normalize = ({ value }: { value: unknown }): unknown =>
   typeof value === 'string' ? value.trim().replace(/\s+/g, ' ') : value;
@@ -25,7 +43,7 @@ export class CreateContactDto {
   email!: string;
 
   @ApiProperty({
-    example: 'We need advisory on zero-trust architecture for distributed systems.'
+    example: 'We need help shipping our internal tooling end-to-end.'
   })
   @IsString()
   @Length(20, 2000)
@@ -36,4 +54,14 @@ export class CreateContactDto {
   @IsBoolean()
   @Equals(true, { message: 'Consent must be true' })
   consent!: true;
+
+  @ApiPropertyOptional({
+    enum: SERVICE_INTERESTS,
+    example: 'full-stack',
+    description: 'Which lane the brief most closely matches'
+  })
+  @IsOptional()
+  @IsString()
+  @IsIn(SERVICE_INTERESTS)
+  serviceInterest?: ServiceInterest;
 }

@@ -11,6 +11,7 @@ export interface ContactLeadInput {
   email: string;
   message: string;
   consent: boolean;
+  serviceInterest?: 'full-stack' | 'testing' | 'architecture' | 'not-sure' | 'other';
 }
 
 export interface ContactSubmitResponse {

@@ -8,15 +8,16 @@ datasource db {
 }
 
 model ContactLead {
-  id        String   @id @default(cuid())
-  name      String   @db.VarChar(120)
-  company   String?  @db.VarChar(120)
-  email     String   @db.VarChar(255)
-  message   String   @db.Text
-  consent   Boolean
-  ipHash    String   @map("ip_hash") @db.VarChar(64)
-  userAgent String   @map("user_agent") @db.VarChar(512)
-  createdAt DateTime @default(now()) @map("created_at")
+  id              String   @id @default(cuid())
+  name            String   @db.VarChar(120)
+  company         String?  @db.VarChar(120)
+  email           String   @db.VarChar(255)
+  message         String   @db.Text
+  consent         Boolean
+  serviceInterest String?  @map("service_interest") @db.VarChar(40)
+  ipHash          String   @map("ip_hash") @db.VarChar(64)
+  userAgent       String   @map("user_agent") @db.VarChar(512)
+  createdAt       DateTime @default(now()) @map("created_at")
 
   @@index([createdAt], map: "idx_contact_leads_created_at")
   @@map("contact_leads")

@@ -72,11 +72,25 @@ describe('API integration', () => {
         company: 'Globaltechno OÜ',
         email: 'jane@example.com',
         message: 'We require a secure architecture review for identity and workload isolation.',
-        consent: true
+        consent: true,
+        serviceInterest: 'architecture'
       })
       .expect(201);
 
     expect(response.body.id).toBe('lead_123');
+  });
+
+  it('POST /api/contact rejects invalid serviceInterest', async () => {
+    await request(app.getHttpServer())
+      .post('/api/contact')
+      .send({
+        name: 'Jane Operator',
+        email: 'jane@example.com',
+        message: 'We require a secure architecture review for identity and workload isolation.',
+        consent: true,
+        serviceInterest: 'not-a-real-lane'
+      })
+      .expect(400);
   });
 
   it('GET /api/case-studies', async () => {

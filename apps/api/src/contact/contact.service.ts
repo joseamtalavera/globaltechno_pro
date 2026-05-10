@@ -31,6 +31,7 @@ export class ContactService {
         email: dto.email.toLowerCase(),
         message: dto.message,
         consent: dto.consent,
+        serviceInterest: dto.serviceInterest,
         ipHash,
         userAgent: sanitizedAgent
       }
