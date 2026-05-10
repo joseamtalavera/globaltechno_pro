@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface Props {
-  variant?: 'filled' | 'ghost' | 'ghost-light' | 'filled-ink' | 'ghost-ink' | 'link-ink';
+  variant?: 'filled-ink' | 'ghost-ink' | 'link-ink';
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   to?: string;
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  variant: 'filled',
+  variant: 'filled-ink',
   size: 'md',
   type: 'button',
   disabled: false,
@@ -56,6 +56,8 @@ const tag = computed(() => {
   text-decoration: none;
   transition:
     background-color var(--duration-fast) ease,
+    color var(--duration-fast) ease,
+    border-color var(--duration-fast) ease,
     transform var(--duration-fast) ease,
     box-shadow var(--duration-fast) ease,
     opacity var(--duration-fast) ease;
@@ -92,39 +94,6 @@ const tag = computed(() => {
 }
 
 /* Variants */
-.btn--filled {
-  background-color: var(--color-accent);
-  color: var(--color-bg-dark);
-}
-
-.btn--filled:hover:not(:disabled) {
-  background-color: var(--color-accent-hover);
-  box-shadow: 0 4px 20px var(--color-accent-glow);
-}
-
-.btn--ghost {
-  background: transparent;
-  border: 1px solid var(--color-border-dark);
-  color: var(--color-text-on-dark);
-}
-
-.btn--ghost:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.btn--ghost-light {
-  background: transparent;
-  border: 1px solid var(--color-border-light);
-  color: var(--color-text-primary);
-}
-
-.btn--ghost-light:hover:not(:disabled) {
-  background: rgba(0, 0, 0, 0.03);
-  border-color: var(--color-text-secondary);
-}
-
-/* New light-context variants (post-pivot) */
 
 .btn--filled-ink {
   background-color: var(--color-accent);
@@ -162,7 +131,7 @@ const tag = computed(() => {
   content: '→';
   display: inline-block;
   margin-left: 0.4rem;
-  transition: transform var(--duration-fast) ease;
+  transition: transform var(--duration-fast) var(--ease-out);
 }
 
 .btn--link-ink:hover:not(:disabled) {

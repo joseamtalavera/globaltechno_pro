@@ -11,14 +11,6 @@
   --color-ink: #0E0E10;
   --color-ink-soft: #1A1A1C;
 
-  /* Legacy aliases (kept for components scheduled for removal in cleanup ticket) */
-  --color-bg-light: var(--color-bg);
-  --color-bg-light-alt: var(--color-bg-alt);
-  --color-bg-dark: var(--color-ink);
-  --color-bg-dark-subtle: var(--color-ink-soft);
-  --color-gradient-start: var(--color-ink);
-  --color-gradient-end: #1A1A2E;
-
   /* Text */
   --color-text-primary: #0E0E10;
   --color-text-secondary: #5C5A55;
@@ -30,13 +22,11 @@
   --color-accent: #D6502E;
   --color-accent-hover: #BC4221;
   --color-accent-soft: rgba(214, 80, 46, 0.10);
-  --color-accent-subtle: rgba(214, 80, 46, 0.08); /* legacy alias */
   --color-accent-glow: rgba(214, 80, 46, 0.18);
 
   /* Borders */
   --color-border: #E8E5DD;
   --color-border-strong: #D9D5C8;
-  --color-border-light: var(--color-border); /* legacy alias */
   --color-border-dark: #2A2A2B;
 
   /* Status */
@@ -203,16 +193,6 @@ a {
   color: var(--color-text-primary);
 }
 
-.section--dark {
-  background-color: var(--color-ink);
-  color: var(--color-text-on-dark);
-}
-
-.section--gradient {
-  background: linear-gradient(135deg, var(--color-ink) 0%, #0d2818 50%, var(--color-ink) 100%);
-  color: var(--color-text-on-dark);
-}
-
 .section__inner {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -277,21 +257,6 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
-.input--dark,
-.section--dark input,
-.section--dark textarea,
-.section--dark select {
-  border-color: var(--color-border-dark);
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--color-text-on-dark);
-}
-
-.input--dark::placeholder,
-.section--dark input::placeholder,
-.section--dark textarea::placeholder {
-  color: var(--color-text-muted-on-dark);
-}
-
 /* ==========================================================================
    Grain & noise (subtle paper feel on light)
    ========================================================================== */
@@ -309,11 +274,6 @@ a:focus-visible {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-size: 200px 200px;
   mix-blend-mode: multiply;
-}
-
-.section--dark.grain-overlay::after {
-  opacity: 0.06;
-  mix-blend-mode: screen;
 }
 
 /* ==========================================================================

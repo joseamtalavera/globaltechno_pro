@@ -49,7 +49,7 @@ onUnmounted(() => {
       </div>
 
       <div class="navbar__actions">
-        <UiButton variant="filled" size="sm" to="/brief">
+        <UiButton variant="filled-ink" size="sm" to="/brief">
           Start a project
         </UiButton>
 
