@@ -74,8 +74,9 @@ export default defineNuxtConfig({
       }
     },
     '/contact': { redirect: { to: '/brief', statusCode: 301 } },
-    '/services': { redirect: { to: '/solutions', statusCode: 301 } },
-    '/services/**': { redirect: { to: '/solutions', statusCode: 301 } },
+    '/solutions': { redirect: { to: '/approach', statusCode: 301 } },
+    '/services': { redirect: { to: '/approach', statusCode: 301 } },
+    '/services/**': { redirect: { to: '/approach', statusCode: 301 } },
     '/case-studies': { redirect: { to: '/work', statusCode: 301 } },
     '/case-studies/**': { redirect: { to: '/work', statusCode: 301 } },
     '/robots.txt': { headers: { 'content-type': 'text/plain; charset=utf-8' } },
