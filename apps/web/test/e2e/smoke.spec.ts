@@ -14,7 +14,7 @@ test('smoke routes', async ({ page }) => {
   await expect(page.locator('h1')).toContainText('be-working');
 
   await page.goto('/work/codewright');
-  await expect(page.locator('h1')).toContainText('codewright');
+  await expect(page.locator('h1')).toContainText('Codewright');
 
   await page.goto('/about');
   await expect(page.locator('h1')).toContainText("don't fit a template");
