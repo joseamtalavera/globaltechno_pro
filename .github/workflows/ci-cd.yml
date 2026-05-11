@@ -56,7 +56,7 @@ jobs:
         run: pnpm --filter @globaltechno/api prisma:generate
 
       - name: Prisma Migrate
-        run: pnpm --filter @globaltechno/api prisma migrate deploy
+        run: pnpm --filter @globaltechno/api prisma:deploy
 
       - name: Prisma Seed
         run: pnpm --filter @globaltechno/api prisma:seed
